@@ -1,226 +1,208 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
-const orbits = [
+const categories = [
   {
     id: "frontend",
-    label: "Frontend",
-    radius: 110,
-    duration: 28,
-    skills: ["React", "Next", "TypeScript", "Vite", "Astro"],
+    label: "Frontend Development",
+    tools: ["React", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "Responsive UI"],
+    note: "Component systems, polished interfaces, accessibility-minded layouts, and performance-aware implementation.",
   },
   {
-    id: "creative",
-    label: "Creative Dev",
-    radius: 180,
-    duration: 40,
-    skills: ["GSAP", "Lenis", "Framer Motion", "WebGL", "GLSL"],
+    id: "motion",
+    label: "Animation & Motion",
+    tools: ["GSAP", "ScrollTrigger", "Framer Motion", "Lenis", "Timeline Design", "Micro-interactions"],
+    note: "Motion systems that guide attention, create pacing, and make the interface feel cinematic without becoming loud.",
   },
   {
-    id: "3d",
-    label: "3D · Motion",
-    radius: 260,
-    duration: 55,
-    skills: ["Three.js", "R3F", "Blender", "Houdini", "Cinema4D"],
+    id: "interactive",
+    label: "3D & Interactive Development",
+    tools: ["Three.js", "React Three Fiber", "WebGL Concepts", "Parallax", "Interactive Scenes"],
+    note: "Lightweight depth, spatial interaction, and atmospheric presentation for immersive product moments.",
   },
   {
     id: "design",
-    label: "UI / UX",
-    radius: 340,
-    duration: 70,
-    skills: ["Figma", "Editorial", "Type", "Systems", "Prototyping"],
+    label: "UI/UX & Design",
+    tools: ["Figma", "Visual Hierarchy", "Design Systems", "Editorial Layout", "Prototyping"],
+    note: "Layouts shaped around readability, storytelling, premium spacing, and emotionally engaging flows.",
+  },
+  {
+    id: "backend",
+    label: "Backend Familiarity",
+    tools: ["FastAPI", "Node APIs", "MongoDB", "Authentication Basics", "Data Modeling"],
+    note: "Enough backend fluency to collaborate cleanly, reason about API contracts, and build complete product flows.",
   },
 ];
 
-const categories = [
-  { id: "all", label: "All Craft" },
-  { id: "frontend", label: "Frontend" },
-  { id: "creative", label: "Creative" },
-  { id: "3d", label: "3D + Motion" },
-  { id: "design", label: "Design" },
-];
-
 export default function Skills() {
-  const [active, setActive] = useState("all");
-  const [hovered, setHovered] = useState(null);
+  const [active, setActive] = useState(categories[0]);
 
   return (
     <section
       id="skills"
       data-testid="skills-section"
-      className="relative w-full bg-[#0B0B0D] py-32 sm:py-40 lg:py-56 overflow-hidden"
+      className="relative w-full overflow-hidden bg-[#08080A] py-28 sm:py-36 lg:py-48"
     >
-      {/* Header */}
       <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-14">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="mb-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
               <span className="h-px w-10 bg-[#D97736]" />
-              Craft — Disciplines
+              Craft / Systems
             </div>
-            <h2
-              data-testid="skills-headline"
-              className="font-display text-5xl font-bold uppercase leading-[0.95] tracking-tight text-[#E8E8E3] sm:text-6xl"
-            >
-              A constellation
-              <br />
-              of <em className="not-italic text-[#D97736]">tools</em>.
+            <h2 className="font-display text-5xl font-bold uppercase leading-[0.95] text-[#F2F0EA] sm:text-6xl">
+              A refined stack for expressive frontend work.
             </h2>
           </div>
-          <div className="lg:col-span-5 lg:col-start-8 self-end">
-            <p className="text-[#8A8A93] text-base sm:text-lg leading-relaxed">
-              Not a checklist — a working set. Each ring is a way of thinking
-              about a problem. Hover a node, or filter to reorganise the orbit.
+
+          <div className="lg:col-span-6 lg:col-start-7">
+            <p className="max-w-2xl text-base leading-relaxed text-[#A9A69F] sm:text-lg">
+              Skills are grouped as working systems, not progress bars. The focus
+              is on how each discipline contributes to immersive, responsive, and
+              story-driven digital experiences.
             </p>
             <div className="mt-8 flex flex-wrap gap-2">
-              {categories.map((c) => (
+              {categories.map((category) => (
                 <button
-                  key={c.id}
+                  key={category.id}
                   type="button"
-                  data-testid={`skills-filter-${c.id}`}
+                  onClick={() => setActive(category)}
                   data-cursor="hover"
-                  onClick={() => setActive(c.id)}
-                  className={`px-4 py-2 font-mono text-[10px] uppercase tracking-[0.24em] border transition-all duration-500 ${
-                    active === c.id
-                      ? "border-[#D97736] text-[#0B0B0D] bg-[#D97736]"
-                      : "border-[#E8E8E3]/20 text-[#8A8A93] hover:text-[#E8E8E3] hover:border-[#E8E8E3]/60"
+                  className={`border px-4 py-3 text-left font-mono text-[10px] uppercase tracking-[0.2em] transition-all duration-500 ${
+                    active.id === category.id
+                      ? "border-[#D97736] bg-[#D97736] text-[#08080A]"
+                      : "border-[#E8E8E3]/15 text-[#8A8A93] hover:border-[#E8E8E3]/45 hover:text-[#E8E8E3]"
                   }`}
                 >
-                  {c.label}
+                  {category.label}
                 </button>
               ))}
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Orbit */}
-      <div className="relative mx-auto mt-24 flex h-[720px] w-full max-w-[900px] items-center justify-center">
-        {/* Center sun */}
-        <div className="absolute z-20 flex h-32 w-32 items-center justify-center rounded-full">
-          <div className="absolute inset-0 rounded-full bg-[#D97736]/10 blur-3xl" />
-          <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-[#D97736]/40 backdrop-blur-md">
-            <div className="absolute inset-2 rounded-full border border-[#D97736]/20" />
-            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#E8E8E3] text-center leading-tight">
-              Kael
-              <br />
-              ◇ 2026
-            </span>
+        <div className="mt-16 grid grid-cols-1 gap-px bg-[#E8E8E3]/10 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="bg-[#0B0B0D] p-6 sm:p-10 lg:p-12">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.id}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.45 }}
+              >
+                <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
+                  Active discipline
+                </div>
+                <h3 className="mt-5 font-display text-4xl font-semibold uppercase leading-[0.95] text-[#E8E8E3] sm:text-5xl">
+                  {active.label}
+                </h3>
+                <p className="mt-6 max-w-xl text-base leading-relaxed text-[#A9A69F]">
+                  {active.note}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="grid grid-cols-2 gap-px bg-[#E8E8E3]/10 sm:grid-cols-3">
+            {active.tools.map((tool, index) => (
+              <motion.div
+                key={tool}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: index * 0.04 }}
+                className="group min-h-[150px] bg-[#0B0B0D] p-5 transition-colors duration-500 hover:bg-[#131316]"
+              >
+                <div className="font-mono text-[10px] uppercase tracking-[0.26em] text-[#4A4A52]">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+                <div className="mt-8 font-display text-xl font-medium text-[#E8E8E3] transition-transform duration-500 group-hover:translate-x-1 sm:text-2xl">
+                  {tool}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
 
-        {/* Orbit rings + nodes */}
-        {orbits.map((o, oi) => {
-          const dim = active !== "all" && active !== o.id;
-          return (
-            <div
-              key={o.id}
-              className="absolute"
-              style={{
-                width: o.radius * 2,
-                height: o.radius * 2,
-              }}
-              data-testid={`orbit-${o.id}`}
-            >
-              {/* Ring */}
-              <div
-                className="absolute inset-0 rounded-full border transition-all duration-700"
-                style={{
-                  borderColor: dim
-                    ? "rgba(232,232,227,0.04)"
-                    : "rgba(232,232,227,0.12)",
-                  borderStyle: "dashed",
-                }}
-              />
-              {/* Rotating cluster */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: o.duration,
-                  ease: "linear",
-                  repeat: Infinity,
-                }}
-                className="absolute inset-0"
-                style={{ opacity: dim ? 0.25 : 1 }}
-              >
-                {o.skills.map((s, i) => {
-                  const angle = (i / o.skills.length) * Math.PI * 2;
-                  const x = Math.cos(angle) * o.radius;
-                  const y = Math.sin(angle) * o.radius;
-                  const isHover = hovered === `${o.id}-${s}`;
-                  return (
-                    <motion.div
-                      key={s}
-                      animate={{ rotate: -360 }}
-                      transition={{
-                        duration: o.duration,
-                        ease: "linear",
-                        repeat: Infinity,
-                      }}
-                      className="absolute"
-                      style={{
-                        left: "50%",
-                        top: "50%",
-                        transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
-                      }}
-                    >
-                      <button
-                        type="button"
-                        onMouseEnter={() => setHovered(`${o.id}-${s}`)}
-                        onMouseLeave={() => setHovered(null)}
-                        data-cursor="hover"
-                        data-testid={`skill-node-${o.id}-${s.toLowerCase()}`}
-                        className={`relative flex h-12 w-12 items-center justify-center rounded-full border transition-all duration-500 ${
-                          isHover
-                            ? "border-[#D97736] bg-[#D97736]/20 scale-125 shadow-[0_0_24px_rgba(217,119,54,0.4)]"
-                            : "border-[#E8E8E3]/20 bg-[#1a1a1f]/60 backdrop-blur-sm"
-                        }`}
-                      >
-                        <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#E8E8E3] whitespace-nowrap">
-                          {s}
-                        </span>
-                      </button>
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
-              {/* Orbit label */}
-              <span
-                className="absolute font-mono text-[9px] uppercase tracking-[0.3em]"
-                style={{
-                  left: "50%",
-                  top: `calc(50% - ${o.radius}px - 18px)`,
-                  transform: "translateX(-50%)",
-                  color: dim ? "#4A4A52" : "#8A8A93",
-                }}
-              >
-                ◇ {o.label}
-              </span>
+        <div className="mt-20 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-4">
+            <div className="mb-5 font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
+              Skill Orbit / Interactive Map
             </div>
-          );
-        })}
-      </div>
+            <h3 className="font-display text-4xl font-semibold uppercase leading-[0.95] text-[#E8E8E3] sm:text-5xl">
+              A solar system of frontend craft.
+            </h3>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-[#A9A69F]">
+              Each orbit groups the tools around a discipline, showing how motion,
+              interface design, 3D depth, and backend fluency support the core
+              frontend experience.
+            </p>
+          </div>
 
-      {/* Tech footnote strip */}
-      <div className="mx-auto mt-16 max-w-[1600px] px-6 sm:px-10 lg:px-14">
-        <div className="grid grid-cols-2 gap-px bg-[#E8E8E3]/10 sm:grid-cols-4">
-          {[
-            { k: "Perf. budget", v: "≤ 90 KB JS" },
-            { k: "Target FPS", v: "60 / 120" },
-            { k: "Tooling", v: "Vite · Webpack" },
-            { k: "Pipeline", v: "GitOps + CDN" },
-          ].map((s) => (
-            <div key={s.k} className="bg-[#0B0B0D] p-6">
-              <div className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#8A8A93]">
-                {s.k}
-              </div>
-              <div className="mt-2 font-display text-xl font-medium text-[#E8E8E3]">
-                {s.v}
-              </div>
-            </div>
-          ))}
+          <motion.div
+            initial={{ opacity: 0, y: 48, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.28 }}
+            transition={{ duration: 0.9, ease: [0.77, 0, 0.175, 1] }}
+            className="lg:col-span-8"
+          >
+            <SkillOrbit />
+          </motion.div>
         </div>
       </div>
     </section>
+  );
+}
+
+function SkillOrbit() {
+  const orbits = [
+    {
+      label: "Frontend",
+      className: "orbit-layer orbit-layer-1",
+      offset: 0,
+      skills: ["React", "Next.js", "TypeScript", "Tailwind"],
+    },
+    {
+      label: "Motion",
+      className: "orbit-layer orbit-layer-2",
+      offset: 45,
+      skills: ["GSAP", "Framer", "Lenis", "ScrollTrigger"],
+    },
+    {
+      label: "Spatial",
+      className: "orbit-layer orbit-layer-3",
+      offset: 22,
+      skills: ["Three.js", "R3F", "WebGL", "Depth"],
+    },
+  ];
+
+  return (
+    <div className="skill-orbit" aria-label="Interactive skills orbit">
+      <div className="skill-orbit-core">
+        <span>Mohammed</span>
+        <strong>Ayyan</strong>
+      </div>
+
+      {orbits.map((orbit) => (
+        <div key={orbit.label} className={orbit.className}>
+          <span className="skill-orbit-label">{orbit.label}</span>
+          {orbit.skills.map((skill, index) => (
+            <div
+              key={skill}
+              className="orbit-node-anchor"
+              style={{
+                "--angle": `${orbit.offset + (index / orbit.skills.length) * 360}deg`,
+              }}
+            >
+              <button type="button" data-cursor="hover" className="skill-orbit-node">
+                <span>{orbit.label}</span>
+                {skill}
+              </button>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
   );
 }

@@ -7,44 +7,56 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
-    id: "project_1",
+    id: "appointment",
     n: "01",
-    title: "Aura Digital",
-    role: "Creative Direction · WebGL",
+    title: "Immersive Appointment Booking Platform",
+    role: "Frontend Architecture / Interaction Design",
     description:
-      "An immersive WebGL platform turning live audio into procedural light fields. Shipped with custom GLSL shaders and a real-time editor.",
-    tech: ["R3F", "GLSL", "Lenis", "GSAP"],
-    url: "https://static.prod-images.emergentagent.com/jobs/cf9019cd-6c7d-4f33-aa3f-d18161c8b2d7/images/b47e1069248cb06912cd8575d75204d25385bba547880540d7c3d3fe31520646.png",
+      "A polished booking experience designed around clarity, trust, and low-friction scheduling with motion-led state changes.",
+    features: ["Guided booking flow", "Responsive calendar UI", "Service filtering", "Confirmation journey"],
+    contributions:
+      "Built reusable booking modules, refined responsive layouts, and designed micro-interactions that make each step feel immediate.",
+    tech: ["React", "Tailwind CSS", "Framer Motion", "API Integration"],
+    image: "https://static.prod-images.emergentagent.com/jobs/cf9019cd-6c7d-4f33-aa3f-d18161c8b2d7/images/b47e1069248cb06912cd8575d75204d25385bba547880540d7c3d3fe31520646.png",
   },
   {
-    id: "project_2",
+    id: "real-estate",
     n: "02",
-    title: "Monolith",
-    role: "3D Direction · Frontend Lead",
+    title: "Interactive Real Estate Experience",
+    role: "Creative Frontend / Motion Systems",
     description:
-      "Architecture showcase for an experimental studio. Each project a sculpted scene, choreographed by scroll.",
-    tech: ["Three.js", "Framer", "Next", "Cabinet"],
-    url: "https://static.prod-images.emergentagent.com/jobs/cf9019cd-6c7d-4f33-aa3f-d18161c8b2d7/images/c016d4389f66ac722e15d1a5fb6fdec290c3079eebcecde7a0dfb2f5f68b8d50.png",
+      "A cinematic property exploration interface with editorial layouts, layered previews, and smooth transitions between discovery states.",
+    features: ["Property storytelling", "Immersive gallery states", "Location-led browsing", "Premium detail pages"],
+    contributions:
+      "Created motion-driven property cards, scroll pacing, and responsive visual hierarchy for high-value listings.",
+    tech: ["Next.js", "GSAP", "ScrollTrigger", "Responsive UI"],
+    image: "https://static.prod-images.emergentagent.com/jobs/cf9019cd-6c7d-4f33-aa3f-d18161c8b2d7/images/c016d4389f66ac722e15d1a5fb6fdec290c3079eebcecde7a0dfb2f5f68b8d50.png",
   },
   {
-    id: "project_3",
+    id: "security",
     n: "03",
-    title: "Obsidian",
-    role: "E‑commerce · Art Direction",
+    title: "Encryption & Security Toolkit",
+    role: "Frontend Engineering / Product Interface",
     description:
-      "Hardware boutique with editorial product cinematics. Physically-based shading meets a quiet, magazine-grade layout.",
-    tech: ["Stripe", "R3F", "Sanity", "GSAP"],
-    url: "https://static.prod-images.emergentagent.com/jobs/cf9019cd-6c7d-4f33-aa3f-d18161c8b2d7/images/be98528eb94d53bbf0bd219b0f1665b222004eca1ae9edbf5de1cbc2ec25e990.png",
+      "A focused utility interface for encryption workflows, designed to make technical security actions feel understandable and controlled.",
+    features: ["Encryption utilities", "Clean input flows", "Result states", "Copy-safe interactions"],
+    contributions:
+      "Translated complex actions into a calm interface with clear hierarchy, predictable feedback, and privacy-first interaction patterns.",
+    tech: ["React", "JavaScript", "Security Concepts", "UX Systems"],
+    image: "https://static.prod-images.emergentagent.com/jobs/cf9019cd-6c7d-4f33-aa3f-d18161c8b2d7/images/be98528eb94d53bbf0bd219b0f1665b222004eca1ae9edbf5de1cbc2ec25e990.png",
   },
   {
-    id: "project_4",
+    id: "waste-tracker",
     n: "04",
-    title: "Nightshift",
-    role: "Brand · Microsite",
+    title: "Waste Reduction Tracker",
+    role: "Frontend Developer / Data Experience",
     description:
-      "After-hours digital gallery presenting contemporary motion artists. Built for slow, attentive viewing.",
-    tech: ["Lenis", "Motion", "Sanity"],
-    url: "https://static.prod-images.emergentagent.com/jobs/cf9019cd-6c7d-4f33-aa3f-d18161c8b2d7/images/b47e1069248cb06912cd8575d75204d25385bba547880540d7c3d3fe31520646.png",
+      "A sustainability-focused tracking experience that turns everyday reduction habits into readable progress and meaningful action.",
+    features: ["Habit tracking", "Reduction insights", "Goal states", "Progress storytelling"],
+    contributions:
+      "Designed the interface structure, reusable data sections, and subtle feedback patterns that encourage continued engagement.",
+    tech: ["React", "Charts", "Tailwind CSS", "State Management"],
+    image: "https://static.prod-images.emergentagent.com/jobs/cf9019cd-6c7d-4f33-aa3f-d18161c8b2d7/images/b47e1069248cb06912cd8575d75204d25385bba547880540d7c3d3fe31520646.png",
   },
 ];
 
@@ -54,12 +66,12 @@ export default function Projects() {
 
   useEffect(() => {
     const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 900px)", () => {
+    mm.add("(min-width: 1024px)", () => {
       const track = trackRef.current;
       const wrap = wrapRef.current;
-      if (!track || !wrap) return;
-      const totalScroll = () => track.scrollWidth - window.innerWidth + 80;
+      if (!track || !wrap) return undefined;
+
+      const totalScroll = () => Math.max(0, track.scrollWidth - window.innerWidth + 120);
       const tween = gsap.to(track, {
         x: () => -totalScroll(),
         ease: "none",
@@ -67,12 +79,13 @@ export default function Projects() {
           trigger: wrap,
           start: "top top",
           end: () => `+=${totalScroll()}`,
-          scrub: 0.8,
+          scrub: 0.9,
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
+
       return () => {
         tween.scrollTrigger?.kill();
         tween.kill();
@@ -86,132 +99,125 @@ export default function Projects() {
     <section
       id="projects"
       data-testid="projects-section"
-      className="relative w-full bg-[#0B0B0D] py-24 sm:py-32"
+      className="relative w-full overflow-hidden bg-[#08080A] py-28 sm:py-36"
     >
-      {/* Section header */}
       <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-14">
-        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-          <div>
-            <div className="mb-4 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <div className="mb-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
               <span className="h-px w-10 bg-[#D97736]" />
-              Selected Work — 2022/2026
+              Selected Work / Case Studies
             </div>
-            <h2
-              data-testid="projects-headline"
-              className="font-display text-5xl font-bold uppercase leading-[0.95] tracking-tight text-[#E8E8E3] sm:text-6xl lg:text-7xl"
-            >
-              Things <em className="not-italic text-[#D97736]">built</em>
-              <br />
-              with care.
+            <h2 className="font-display text-5xl font-bold uppercase leading-[0.95] text-[#F2F0EA] sm:text-6xl lg:text-7xl">
+              Projects shaped as immersive product stories.
             </h2>
           </div>
-          <p className="max-w-md text-[#8A8A93]">
-            A non-exhaustive set of recent work — chosen for what they taught me
-            about feel, restraint and craft.
+          <p className="max-w-xl text-base leading-relaxed text-[#A9A69F] lg:col-span-4 lg:col-start-9">
+            Each project is presented through role, contribution, features, and
+            stack because the craft lives in both the interface and the systems
+            behind it.
           </p>
         </div>
       </div>
 
-      {/* Horizontal scroll on desktop */}
-      <div
-        ref={wrapRef}
-        className="relative mt-20 hidden h-[100svh] overflow-hidden lg:block"
-        data-testid="projects-horizontal-wrap"
-      >
-        <div
-          ref={trackRef}
-          className="horizontal-track flex h-full items-center gap-12 pl-14 pr-24"
-          style={{ width: "max-content" }}
-        >
-          {projects.map((p) => (
-            <ProjectCard key={p.id} project={p} />
+      <div ref={wrapRef} className="relative mt-20 hidden h-[100svh] overflow-hidden lg:block">
+        <div ref={trackRef} className="horizontal-track flex h-full items-center gap-10 pl-14 pr-32" style={{ width: "max-content" }}>
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
-          <div className="flex h-full w-[60vw] flex-col items-start justify-center">
-            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
-              End — Index
+          <div className="project-outro relative flex h-[74vh] w-[42vw] min-w-[520px] flex-col justify-between overflow-hidden border border-[#E8E8E3]/10 bg-[#101014] p-10">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_25%,rgba(217,119,54,0.16),transparent_28%)]" />
+            <div className="project-outro-frame absolute inset-10 border border-[#E8E8E3]/10" />
+            <div className="relative z-10 flex items-start justify-between">
+              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
+                Next / Collaboration
+              </div>
+              <span className="h-12 w-12 border-r border-t border-[#E8E8E3]/25" />
             </div>
-            <p className="mt-4 font-display text-5xl font-bold leading-[1] text-[#E8E8E3]">
-              More on request.
-            </p>
-            <button
-              type="button"
-              data-cursor="hover"
-              data-testid="projects-end-cta"
-              onClick={() =>
-                document
-                  .getElementById("contact")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="mt-10 inline-flex items-center gap-2 border-b border-[#E8E8E3]/30 pb-1 font-mono text-xs uppercase tracking-[0.24em] text-[#E8E8E3] transition-colors hover:text-[#D97736] hover:border-[#D97736]"
-            >
-              Request the archive <ArrowUpRight size={14} weight="light" />
-            </button>
+            <div className="relative z-10">
+              <p className="max-w-lg font-display text-5xl font-semibold uppercase leading-[0.95] text-[#E8E8E3]">
+                Open to building the next cinematic web experience.
+              </p>
+              <button
+                type="button"
+                data-cursor="hover"
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="mt-10 inline-flex items-center gap-3 border-b border-[#D97736]/60 pb-2 font-mono text-[11px] uppercase tracking-[0.24em] text-[#D97736] transition-colors hover:text-[#E8E8E3]"
+              >
+                Start a conversation <ArrowUpRight size={15} weight="light" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Vertical fallback for mobile/tablet */}
-      <div className="mt-16 grid grid-cols-1 gap-16 px-6 sm:px-10 lg:hidden">
-        {projects.map((p) => (
-          <ProjectCard key={p.id} project={p} variant="mobile" />
+      <div className="mx-auto mt-16 grid max-w-[1600px] grid-cols-1 gap-10 px-6 sm:px-10 lg:hidden">
+        {projects.map((project) => (
+          <ProjectCard key={project.id} project={project} mobile />
         ))}
       </div>
     </section>
   );
 }
 
-function ProjectCard({ project, variant }) {
-  const isMobile = variant === "mobile";
+function ProjectCard({ project, mobile = false }) {
   return (
     <article
       data-testid={`project-card-${project.id}`}
-      data-cursor-label="Open"
-      className={`group relative ${
-        isMobile
-          ? "w-full"
-          : "h-[75vh] w-[68vw] max-w-[1100px] flex-shrink-0"
+      data-cursor-label="View"
+      className={`project-card group relative overflow-hidden border border-[#E8E8E3]/10 bg-[#101014] ${
+        mobile ? "min-h-[680px]" : "h-[74vh] w-[72vw] max-w-[1120px] flex-shrink-0"
       }`}
     >
-      <div className="relative h-full w-full overflow-hidden bg-[#1a1a1f]">
-        <img
-          src={project.url}
-          alt={project.title}
-          loading="lazy"
-          className={`h-full w-full object-cover transition-all duration-slow ease-out group-hover:scale-[1.04] group-hover:brightness-110 ${
-            isMobile ? "aspect-[16/10]" : ""
-          }`}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D]/80 via-transparent to-[#0B0B0D]/20" />
-        <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-10 lg:p-12">
-          <div className="flex items-start justify-between">
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#E8E8E3]/80">
-              {project.n} / {String(projects.length).padStart(2, "0")}
-            </span>
-            <ArrowUpRight
-              size={28}
-              weight="light"
-              className="text-[#E8E8E3] transition-transform duration-700 group-hover:rotate-45"
-            />
+      <img
+        src={project.image}
+        alt={project.title}
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover opacity-45 grayscale transition-all duration-slow group-hover:scale-[1.035] group-hover:opacity-60 group-hover:grayscale-0"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,10,0.95),rgba(8,8,10,0.72)_46%,rgba(8,8,10,0.2))]" />
+      <div className="relative z-10 flex h-full flex-col justify-between p-6 sm:p-9 lg:p-12">
+        <div className="flex items-start justify-between gap-6">
+          <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
+            {project.n} / 04
           </div>
+          <ArrowUpRight size={28} weight="light" className="text-[#E8E8E3] transition-transform duration-700 group-hover:translate-x-1 group-hover:-translate-y-1" />
+        </div>
+
+        <div className="grid gap-10 lg:grid-cols-[1fr_0.85fr] lg:items-end">
           <div>
-            <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
-              {project.role}
-            </div>
-            <h3 className="font-display text-4xl font-bold uppercase tracking-tight text-[#E8E8E3] sm:text-5xl lg:text-6xl">
+            <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.28em] text-[#D97736]">{project.role}</div>
+            <h3 className="max-w-3xl font-display text-4xl font-bold uppercase leading-[0.95] text-[#F2F0EA] sm:text-5xl lg:text-6xl">
               {project.title}
             </h3>
-            <p className="mt-4 max-w-md text-sm text-[#E8E8E3]/80 sm:text-base">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-[#D5D2CA]">
               {project.description}
             </p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {project.tech.map((t) => (
-                <span
-                  key={t}
-                  className="border border-[#E8E8E3]/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-[#E8E8E3]/80"
-                >
-                  {t}
-                </span>
-              ))}
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#9C9992]">
+              {project.contributions}
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <div>
+              <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.24em] text-[#8A8A93]">Features</div>
+              <div className="flex flex-wrap gap-2">
+                {project.features.map((feature) => (
+                  <span key={feature} className="border border-[#E8E8E3]/15 bg-[#08080A]/60 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.18em] text-[#D5D2CA]">
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.24em] text-[#8A8A93]">Stack</div>
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((tech) => (
+                  <span key={tech} className="text-xs text-[#D97736]">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
