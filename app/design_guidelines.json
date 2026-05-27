@@ -1,0 +1,114 @@
+{
+  "theme": "dark",
+  "archetype": "5 (Luxury)",
+  "design_philosophy": "A handcrafted digital experience created by a premium creative studio. Combines minimalism, futuristic editorial design, and interactive 3D storytelling. Atmospheric and emotionally engaging.",
+  "colors": {
+    "background": {
+      "primary": "#0B0B0D",
+      "secondary": "#1A1A1F"
+    },
+    "text": {
+      "primary": "#E8E8E3",
+      "secondary": "#8A8A93",
+      "muted": "#4A4A52"
+    },
+    "accent": {
+      "primary": "#D97736",
+      "glow": "rgba(217, 119, 54, 0.5)",
+      "highlight": "#F5A623"
+    },
+    "borders": {
+      "default": "rgba(232, 232, 227, 0.1)",
+      "focus": "rgba(217, 119, 54, 0.5)"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "heading": "'Cabinet Grotesk', sans-serif",
+      "body": "'Manrope', sans-serif",
+      "mono": "'JetBrains Mono', monospace"
+    },
+    "hierarchy": {
+      "h1_hero": "text-[clamp(3rem,10vw,8rem)] font-black tracking-tighter leading-none uppercase text-[#E8E8E3]",
+      "h2_section": "text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-[#E8E8E3]",
+      "h3_card": "text-2xl sm:text-3xl font-medium tracking-tight text-[#E8E8E3]",
+      "body": "text-base sm:text-lg font-light leading-relaxed text-[#8A8A93]",
+      "overline": "text-xs font-mono uppercase tracking-[0.2em] text-[#D97736]"
+    }
+  },
+  "spacing_and_layout": {
+    "container": "max-w-[100vw] overflow-x-hidden",
+    "section_padding": "py-24 sm:py-32 lg:py-48",
+    "bento_gaps": "gap-8 lg:gap-12",
+    "grid_strategy": "Asymmetrical overlay layouts. Elements should span multiple columns irregularly to create tension and artful balance."
+  },
+  "visual_effects": {
+    "noise_overlay": "SVG filter or CSS background with 2-4% opacity mix-blend-overlay to add film grain over the entire site.",
+    "glassmorphism": "backdrop-blur-xl bg-[#1A1A1F]/40 border border-[#E8E8E3]/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]",
+    "shadows": {
+      "glow": "drop-shadow-[0_0_15px_rgba(217,119,54,0.4)]",
+      "deep": "shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+    }
+  },
+  "components": {
+    "cursor": "Custom magnetic cursor. Use a framer-motion div, absolute positioned, fixed to window. Size 16px by default, expanding to 64px with mix-blend-screen and border when hovering interactive elements.",
+    "buttons": "Magnetic effect on hover. No solid backgrounds unless CTA. Use 1px border border-[#E8E8E3]/20 with relative overflow-hidden and a sweep-fill effect in #D97736 on hover.",
+    "inputs": "Floating label pattern. border-b only. border-[#E8E8E3]/20 bg-transparent text-xl py-4 focus:outline-none focus:border-[#D97736] transition-colors"
+  },
+  "sections_and_interactions": {
+    "hero": {
+      "layout": "100vh full bleed. Center aligned massive text overlay. Z-index layering: Text in front, 3D object in middle, background dark void.",
+      "3d_object": "R3F Liquid Chrome Monolith or Torus Knot, slowly rotating, reflecting an environment map with amber lighting.",
+      "interactions": "Object rotation tied to mouse movement. Scroll triggers downward translation of the 3D object to act as the storyteller in the next section."
+    },
+    "about": {
+      "layout": "Split-screen. Left side (sticky) with cinematic portrait and overline. Right side deep scrolling typographic narrative.",
+      "interactions": "Progressive text reveal. Opacity of words transitions from 10% to 100% as they enter viewport center."
+    },
+    "projects": {
+      "layout": "Horizontal scroll container (GSAP ScrollTrigger or Framer Motion useScroll). Massive cinematic project images taking 70vw, with huge typography overlaid.",
+      "interactions": "Image hover applies scale(1.05) and desaturates slightly. Depth zoom effect."
+    },
+    "skills": {
+      "layout": "Centered radial layout / orbit system. No standard progress bars.",
+      "interactions": "Words (WebGL, React, R3F, Motion) rotating in concentric circles using 2D Framer Motion or inside the R3F canvas as floating 3D text nodes."
+    },
+    "contact": {
+      "layout": "Minimalist centered form. Huge typography.",
+      "interactions": "Morphing submit button, soft glow on input focus."
+    }
+  },
+  "media": {
+    "about_portrait": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/cf9019cd-6c7d-4f33-aa3f-d18161c8b2d7/images/ca5a179dba738b06ed1dabd435532d8e6b1b88d85b9110cc67195020eab29c48.png",
+      "description": "Cinematic portrait for the About section."
+    },
+    "projects": [
+      {
+        "id": "project_1",
+        "url": "https://static.prod-images.emergentagent.com/jobs/cf9019cd-6c7d-4f33-aa3f-d18161c8b2d7/images/b47e1069248cb06912cd8575d75204d25385bba547880540d7c3d3fe31520646.png",
+        "title": "Aura Digital",
+        "description": "Immersive WebGL App"
+      },
+      {
+        "id": "project_2",
+        "url": "https://static.prod-images.emergentagent.com/jobs/cf9019cd-6c7d-4f33-aa3f-d18161c8b2d7/images/c016d4389f66ac722e15d1a5fb6fdec290c3079eebcecde7a0dfb2f5f68b8d50.png",
+        "title": "Monolith",
+        "description": "3D Architecture Showcase"
+      },
+      {
+        "id": "project_3",
+        "url": "https://static.prod-images.emergentagent.com/jobs/cf9019cd-6c7d-4f33-aa3f-d18161c8b2d7/images/be98528eb94d53bbf0bd219b0f1665b222004eca1ae9edbf5de1cbc2ec25e990.png",
+        "title": "Obsidian",
+        "description": "Hardware E-Commerce"
+      }
+    ]
+  },
+  "tech_stack_instructions": {
+    "styling": "Tailwind CSS with raw HTML/motion.divs for custom layouts. DO NOT use generic Shadcn cards for the main sections.",
+    "animation": "Framer Motion for UI transitions. Lenis for smooth scrolling (MANDATORY). React Three Fiber (R3F) + Drei for the central 3D object.",
+    "testing": "All interactive elements (buttons, inputs, links, orbit nodes) MUST include a 'data-testid' attribute using kebab-case role-based naming (e.g., 'submit-contact-button').",
+    "icons": "Use @phosphor-icons/react (Duotone weight) to break the corporate tech look and maintain premium feel."
+  }
+}
+

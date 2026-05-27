@@ -1,0 +1,7 @@
+/* Reserved for page-specific overrides if needed */
+.App {
+    background: var(--bg-primary);
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}

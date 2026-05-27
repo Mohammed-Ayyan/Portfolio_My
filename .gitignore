@@ -1,0 +1,19 @@
+# dependencies
+node_modules/
+
+# python
+.venv/
+venv/
+__pycache__/
+
+# build
+.next/
+dist/
+build/
+
+# env
+.env
+.env.local
+
+# logs
+*.log
