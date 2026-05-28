@@ -12,7 +12,11 @@ const neuralMemories = [
     telemetry: "RENDER_FLOW",
     desc: "CLIENT ENGINE",
     metric: "32ms",
-    x: "4%", y: "13%",
+    x: "5%", y: "8%",
+    depth: "near",
+    eyebrow: "CLIENT_EDGE // PORT_3000",
+    title: "UI & SSR Engine",
+    points: ["React Rendering", "Next.js Routing", "SSR Optimization"],
   },
   {
     id: "api",
@@ -21,7 +25,11 @@ const neuralMemories = [
     telemetry: "REST_ACTIVE",
     desc: "NODE ORCHESTRATOR",
     metric: "8ms",
-    x: "71%", y: "7%",
+    x: "66%", y: "8%",
+    depth: "far",
+    eyebrow: "API_ROUTING // V8_EXEC",
+    title: "API Orchestration",
+    points: ["Express Middleware", "REST Endpoints", "Request Validation", "Response Handling"],
   },
   {
     id: "db",
@@ -30,7 +38,11 @@ const neuralMemories = [
     telemetry: "PIPELINE_OK",
     desc: "MONGO SECURE",
     metric: "14ms",
-    x: "9%", y: "74%",
+    x: "5%", y: "64%",
+    depth: "mid",
+    eyebrow: "DATA_HORIZON // REPLICA",
+    title: "MongoDB & Secure",
+    points: ["Data Storage", "Index Optimization", "Aggregation Pipeline", "Replica Synchronization"],
   },
   {
     id: "dsa",
@@ -39,9 +51,63 @@ const neuralMemories = [
     telemetry: "RESONANCE",
     desc: "OPTIMAL SOLVER",
     metric: "O(log n)",
-    x: "67%", y: "67%",
+    x: "61%", y: "66%",
+    depth: "near",
     href: "https://leetcode.com/u/ZasFksu4HE/",
+    eyebrow: "DSA_SOLVER // BST_CONSTELLATION",
+    title: "Algorithmic Shard",
+    points: ["Problem Solving", "DSA Patterns", "Complexity Analysis", "Optimization Logic"],
   },
+  {
+    id: "auth",
+    label: "Auth Trace",
+    whisper: "JWT_SESSION",
+    telemetry: "ACCESS_LOCK",
+    desc: "SECURE FLOW",
+    metric: "valid",
+    x: "73%", y: "43%",
+    depth: "ghost",
+    eyebrow: "AUTH_LAYER // SECURE",
+    title: "Auth Layer",
+    points: ["JWT Verification", "Session Management", "Role Protection"],
+  },
+  {
+    id: "deploy",
+    label: "Edge Deploy",
+    whisper: "BUILD_RELEASE",
+    telemetry: "EDGE_READY",
+    desc: "SHIP LAYER",
+    metric: "live",
+    x: "41%", y: "80%",
+    depth: "mid",
+    eyebrow: "DEPLOYMENT_PIPELINE",
+    title: "Deployment Pipeline",
+    points: ["Build", "Test", "Optimize", "Deploy"],
+  },
+  {
+    id: "cache",
+    label: "Cache Echo",
+    whisper: "MEMO_STATE",
+    telemetry: "HOT_PATH",
+    desc: "FAST RECALL",
+    metric: "O(1)",
+    x: "4%", y: "42%",
+    depth: "ghost",
+    eyebrow: "SYSTEM_NERVES",
+    title: "Runtime Feed",
+    points: ["128 Active", "24 Synapses", "98% Stable"],
+  },
+];
+
+const reactorNodes = [
+  { x: "45%", y: "37%", label: "</>" },
+  { x: "31%", y: "47%", label: "DB" },
+  { x: "68%", y: "36%", label: "API" },
+  { x: "53%", y: "68%", label: "JS" },
+  { x: "79%", y: "62%", label: "AUTH" },
+  { x: "38%", y: "73%", label: "OPS" },
+  { x: "24%", y: "55%", label: "SSR" },
+  { x: "86%", y: "29%", label: "AI" },
 ];
 
 const memoryConfig = neuralMemories.reduce((acc, m) => { acc[m.id] = m; return acc; }, {});
@@ -49,36 +115,36 @@ const memoryConfig = neuralMemories.reduce((acc, m) => { acc[m.id] = m; return a
 /* ─── Organic Branching Neural Pathways ──────────────────────────── */
 const neuralPaths = [
   // Primary fibers: each memory → core
-  { from: "ui", d: "M 10 21 C 17 25, 18 34, 28 37 C 38 41, 38 48, 50 50" },
-  { from: "ui", d: "M 12 24 C 8 33, 15 40, 21 46 C 27 52, 35 51, 42 56" },
-  { from: "ui", d: "M 9 19 C 18 13, 28 19, 36 16 C 43 14, 45 20, 51 22" },
-  { from: "api", d: "M 82 16 C 76 24, 72 27, 66 35 C 61 42, 56 43, 50 50" },
+  { from: "ui", d: "M 7 26 C 17 17, 28 25, 37 21 C 46 17, 49 24, 57 25 C 66 26, 68 34, 74 41" },
+  { from: "ui", d: "M 10 31 C 20 39, 31 34, 39 42 C 47 51, 56 47, 66 55 C 74 61, 81 58, 92 64" },
+  { from: "api", d: "M 61 13 C 53 18, 51 25, 43 28 C 33 32, 29 41, 20 44 C 13 46, 10 53, 6 60" },
+  { from: "api", d: "M 66 11 C 76 18, 80 26, 76 34 C 72 42, 76 48, 86 52 C 92 55, 95 61, 98 68" },
   // Branching sub-fibers (asymmetric splits)
-  { from: "api", d: "M 83 18 C 89 29, 83 38, 75 43 C 67 48, 64 55, 56 57" },
-  { from: "api", d: "M 79 14 C 70 12, 63 18, 58 27 C 53 34, 48 34, 42 39" },
-  { from: "db", d: "M 20 82 C 24 71, 19 62, 29 57 C 38 52, 41 55, 50 50" },
-  { from: "db", d: "M 17 79 C 29 83, 36 76, 43 72 C 50 68, 49 60, 57 56" },
-  { from: "db", d: "M 21 84 C 16 73, 12 66, 19 58 C 24 51, 19 45, 25 39" },
-  { from: "dsa", d: "M 78 75 C 70 72, 69 64, 62 61 C 56 58, 56 53, 50 50" },
-  { from: "dsa", d: "M 77 76 C 85 67, 83 56, 75 52 C 68 49, 66 42, 58 39" },
-  { from: "dsa", d: "M 75 73 C 66 82, 58 77, 52 72 C 46 67, 41 70, 35 64" },
+  { from: "db", d: "M 24 69 C 33 62, 37 69, 45 63 C 52 57, 58 58, 66 55 C 74 52, 77 47, 84 44" },
+  { from: "db", d: "M 20 66 C 14 72, 20 82, 31 82 C 43 82, 45 75, 54 76 C 65 78, 70 85, 82 83" },
+  { from: "dsa", d: "M 75 52 C 69 47, 68 38, 60 36 C 50 34, 47 42, 39 42 C 30 42, 26 34, 18 35" },
+  { from: "dsa", d: "M 78 54 C 83 62, 74 70, 67 72 C 58 75, 51 70, 44 74 C 37 78, 35 88, 25 91" },
+  { from: "auth", d: "M 41 38 C 45 29, 54 31, 59 36 C 64 42, 61 49, 66 55 C 71 61, 80 60, 87 67" },
+  { from: "deploy", d: "M 63 81 C 54 76, 51 84, 42 80 C 32 76, 30 66, 20 66 C 11 67, 7 75, 3 84" },
+  { from: "cache", d: "M 7 49 C 16 53, 21 48, 27 54 C 33 61, 41 58, 48 52 C 56 45, 63 46, 75 52" },
   // Cross-connections (synaptic bridges)
-  { from: null, d: "M 36 16 C 43 27, 52 23, 58 27 C 67 33, 67 41, 75 43" },
-  { from: null, d: "M 21 46 C 29 44, 34 49, 42 56 C 49 63, 50 66, 43 72" },
-  { from: null, d: "M 25 39 C 34 34, 39 38, 42 39 C 49 41, 51 34, 58 39" },
-  { from: null, d: "M 57 56 C 64 60, 68 57, 75 52 C 80 49, 83 52, 87 59" },
-  { from: null, d: "M 35 64 C 43 61, 50 64, 56 57 C 62 50, 68 50, 75 52" },
-  { from: null, d: "M 51 22 C 47 30, 54 35, 50 43 C 47 48, 48 51, 50 50" },
+  { from: null, d: "M 3 18 C 16 8, 33 10, 43 17 C 55 24, 66 18, 79 25 C 90 31, 96 42, 99 52" },
+  { from: null, d: "M 1 70 C 15 62, 25 68, 35 59 C 46 49, 55 54, 66 45 C 78 35, 84 30, 97 34" },
+  { from: null, d: "M 14 96 C 28 83, 41 92, 54 83 C 67 74, 77 80, 93 73" },
+  { from: null, d: "M 31 6 C 29 20, 36 29, 48 31 C 61 33, 59 43, 69 48 C 79 53, 89 49, 98 58" },
+  { from: null, d: "M 12 40 C 19 28, 31 30, 39 34 C 49 39, 53 31, 61 36 C 69 41, 65 53, 72 61 C 78 68, 90 66, 96 77" },
+  { from: null, d: "M 5 57 C 17 55, 21 64, 30 66 C 42 69, 46 59, 57 61 C 70 63, 79 75, 94 70" },
 ];
 
 /* ─── Synapse Junction Points ────────────────────────────────────── */
 const synapseJunctions = [
-  { cx: 50, cy: 50, r: 1.4, primary: true },
-  { cx: 36, cy: 16, r: 0.75 }, { cx: 58, cy: 27, r: 0.8 },
-  { cx: 21, cy: 46, r: 0.65 }, { cx: 75, cy: 43, r: 0.72 },
-  { cx: 42, cy: 56, r: 0.65 }, { cx: 75, cy: 52, r: 0.7 },
-  { cx: 43, cy: 72, r: 0.68 }, { cx: 57, cy: 56, r: 0.62 },
-  { cx: 25, cy: 39, r: 0.55 }, { cx: 87, cy: 59, r: 0.5 },
+  { cx: 64, cy: 47, r: 1.35, primary: true },
+  { cx: 37, cy: 21, r: 0.62 }, { cx: 74, cy: 41, r: 0.72 },
+  { cx: 39, cy: 42, r: 0.78 }, { cx: 66, cy: 55, r: 0.8 },
+  { cx: 20, cy: 66, r: 0.62 }, { cx: 84, cy: 44, r: 0.56 },
+  { cx: 44, cy: 74, r: 0.58 }, { cx: 82, cy: 83, r: 0.52 },
+  { cx: 27, cy: 54, r: 0.5 }, { cx: 57, cy: 61, r: 0.64 },
+  { cx: 18, cy: 35, r: 0.46 }, { cx: 93, cy: 73, r: 0.48 },
 ];
 
 /* ─── Floating Computational Whispers ────────────────────────────── */
@@ -93,6 +159,9 @@ const whispers = [
   { text: "heap.relax()", x: "56%", y: "84%" },
   { text: "jwt.verify", x: "5%", y: "44%" },
   { text: "hydrate()", x: "58%", y: "18%" },
+  { text: "edge.warm()", x: "69%", y: "29%" },
+  { text: "schema.trace", x: "33%", y: "70%" },
+  { text: "dfs.branch()", x: "88%", y: "54%" },
 ];
 
 export default function DeveloperIdentity() {
@@ -185,7 +254,7 @@ export default function DeveloperIdentity() {
             <MagneticButton onClick={scrollToProjects} variant="solid" data-cursor-label="Work" data-testid="view-projects-btn">
               View Projects <ArrowUpRight size={16} weight="light" />
             </MagneticButton>
-            <MagneticButton as="a" href="/resume.pdf" variant="outline" data-cursor-label="Resume" data-testid="resume-btn">
+            <MagneticButton as="a" href="/resume.pdf" download="Mohammed-Ayyan-Resume.pdf" variant="outline" data-cursor-label="Resume" data-testid="resume-btn">
               Resume <DownloadSimple size={16} weight="light" />
             </MagneticButton>
             <MagneticButton as="a" href="https://github.com" target="_blank" rel="noreferrer" variant="outline" data-cursor-label="GitHub" data-testid="github-btn">
@@ -261,46 +330,7 @@ export default function DeveloperIdentity() {
                       strokeDasharray={isActive ? "2.8 5.6" : "4 15 1 8"}
                       strokeLinecap="round"
                       className="nerve-glow-line"
-                      filter={isActive ? "url(#sig-glow)" : "url(#nerve-soft)"}
                     />
-                    {/* Pulse packet */}
-                    {!isBridge && (
-                      <circle
-                        r={isActive ? "1.1" : "0.55"}
-                        fill="#F5A623"
-                        opacity={isActive ? "0.95" : "0.3"}
-                        filter="url(#nerve-soft)"
-                      >
-                        <animateMotion
-                          dur={isActive ? "0.9s" : `${2.8 + idx * 0.25}s`}
-                          repeatCount="indefinite"
-                          path={fiber.d}
-                          begin={`${idx * 0.18}s`}
-                        />
-                      </circle>
-                    )}
-                    {/* Trailing decay particle */}
-                    {!isBridge && idx < 4 && (
-                      <circle r="0.4" fill="#D97736" opacity={isActive ? "0.7" : "0.12"}>
-                        <animateMotion
-                          dur={isActive ? "1.2s" : `${3.6 + idx * 0.3}s`}
-                          repeatCount="indefinite"
-                          path={fiber.d}
-                          begin={`${idx * 0.18 + 0.5}s`}
-                        />
-                      </circle>
-                    )}
-                    {!isBridge && idx % 2 === 0 && (
-                      <circle r={isActive ? "0.75" : "0.32"} fill="#D97736" opacity={isActive ? "0.75" : "0.16"}>
-                        <animateMotion
-                          dur={isActive ? "1.45s" : `${5.8 + idx * 0.18}s`}
-                          repeatCount="indefinite"
-                          path={fiber.d}
-                          begin={`${idx * 0.23 + 0.85}s`}
-                        />
-                        <animate attributeName="opacity" values="0;0.55;0.12;0" dur={isActive ? "1.45s" : `${5.8 + idx * 0.18}s`} repeatCount="indefinite" />
-                      </circle>
-                    )}
                   </g>
                 );
               })}
@@ -308,48 +338,47 @@ export default function DeveloperIdentity() {
               {/* ═══ SYNAPSE JUNCTIONS ═══ */}
               {synapseJunctions.map((syn, i) => (
                 <g key={`syn-${i}`}>
-                  <circle cx={syn.cx} cy={syn.cy} r={syn.r} fill="rgba(217,119,54,0.15)" filter="url(#nerve-soft)" />
-                  <circle cx={syn.cx} cy={syn.cy} r={syn.r * 0.5} fill="#D97736" opacity="0.5">
-                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur={`${2.5 + i * 0.4}s`} repeatCount="indefinite" />
-                  </circle>
+                  <circle cx={syn.cx} cy={syn.cy} r={syn.r} fill="rgba(217,119,54,0.15)" />
+                  <circle cx={syn.cx} cy={syn.cy} r={syn.r * 0.5} fill="#D97736" opacity="0.5" className="reactor-synapse-dot" />
                   {syn.primary && (
-                    <circle cx={syn.cx} cy={syn.cy} r={syn.r * 3} fill="none" stroke="rgba(217,119,54,0.08)" strokeWidth="0.3">
-                      <animate attributeName="r" values={`${syn.r * 2};${syn.r * 5};${syn.r * 2}`} dur="4s" repeatCount="indefinite" />
-                      <animate attributeName="opacity" values="0.15;0.03;0.15" dur="4s" repeatCount="indefinite" />
-                    </circle>
+                    <circle cx={syn.cx} cy={syn.cy} r={syn.r * 4} fill="none" stroke="rgba(217,119,54,0.08)" strokeWidth="0.3" />
                   )}
                 </g>
               ))}
 
               {/* ═══ DSA CONSTELLATION (open subnet) ═══ */}
-              <g className="dsa-constellation" filter="url(#nerve-soft)">
-                <path d="M 70 74 C 66 76, 66 79, 64 80 C 61 82, 61 85, 58 86" className="dsa-organic-link" />
-                <path d="M 70 74 C 75 75, 75 80, 78 82 C 82 84, 81 88, 84 88" className="dsa-organic-link" />
-                <path d="M 64 80 C 66 83, 66 86, 68 88" className="dsa-organic-link dsa-organic-link-soft" />
-                <path d="M 78 82 C 75 84, 76 88, 74 90" className="dsa-organic-link dsa-organic-link-hot" />
-                <path d="M 58 86 C 62 91, 70 92, 74 90 C 79 88, 80 84, 84 88" className="dsa-organic-echo" />
+              <g className="dsa-constellation">
+                <path d="M 72 46 C 77 43, 82 45, 86 50 C 91 56, 88 63, 94 68" className="dsa-organic-link" />
+                <path d="M 72 46 C 69 54, 73 59, 68 66 C 63 73, 53 69, 47 76" className="dsa-organic-link" />
+                <path d="M 86 50 C 81 57, 82 64, 76 70 C 70 77, 77 83, 70 89" className="dsa-organic-link dsa-organic-link-hot" />
+                <path d="M 68 66 C 75 66, 82 72, 91 70 C 96 69, 98 74, 99 80" className="dsa-organic-link dsa-organic-link-soft" />
+                <path d="M 47 76 C 58 86, 70 89, 83 82 C 91 78, 94 70, 99 68" className="dsa-organic-echo" />
                 {[
-                  [70, 74, 0.9, 0.62], [64, 80, 0.72, 0.42], [78, 82, 0.7, 0.42],
-                  [58, 86, 0.48, 0.25], [68, 88, 0.48, 0.28], [74, 90, 0.65, 0.72],
-                  [84, 88, 0.48, 0.25], [62, 91, 0.32, 0.18], [81, 78, 0.28, 0.16],
+                  [72, 46, 0.92, 0.58], [86, 50, 0.66, 0.4], [94, 68, 0.52, 0.26],
+                  [68, 66, 0.72, 0.45], [47, 76, 0.46, 0.22], [76, 70, 0.6, 0.52],
+                  [70, 89, 0.54, 0.65], [91, 70, 0.34, 0.2], [99, 80, 0.28, 0.15],
                 ].map(([cx, cy, r, opacity]) => (
-                  <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={r} fill={cx === 74 ? "#F5A623" : "#D97736"} opacity={opacity} />
+                  <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={r} fill={cx === 70 ? "#F5A623" : "#D97736"} opacity={opacity} />
                 ))}
                 {/* search pulse through tree */}
-                <circle r="0.7" fill="#F5A623" opacity="0" filter="url(#sig-glow)">
-                  <animateMotion dur="4.2s" repeatCount="indefinite" path="M 70 74 C 75 75, 75 80, 78 82 C 75 84, 76 88, 74 90" />
-                  <animate attributeName="opacity" values="0;0.9;0.9;0" dur="4.2s" repeatCount="indefinite" keyTimes="0;0.1;0.75;1" />
-                </circle>
-                {/* target ripple */}
-                <circle cx="74" cy="90" r="1.2" fill="none" stroke="#F5A623" strokeWidth="0.3" opacity="0">
-                  <animate attributeName="r" values="1;3.5;1" dur="4.2s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="0;0;0.6;0" dur="4.2s" repeatCount="indefinite" keyTimes="0;0.7;0.8;1" />
-                </circle>
+                <circle cx="70" cy="89" r="1.2" fill="none" stroke="#F5A623" strokeWidth="0.3" opacity="0.45" />
               </g>
             </svg>
 
+            <div className="reactor-pulse-field" aria-hidden="true">
+              {reactorNodes.map((node, i) => (
+                <span
+                  key={node.label}
+                  className="reactor-orb"
+                  style={{ left: node.x, top: node.y, animationDelay: `${i * -0.55}s` }}
+                >
+                  {node.label}
+                </span>
+              ))}
+            </div>
+
             {/* ═══ COMPUTATIONAL HEART — LIVING CORE ═══ */}
-            <div className="nerve-heart-wrap">
+            <div className="nerve-heart-wrap" style={{ "--heart-x": "50%", "--heart-y": "52%" }}>
               {/* Expanding resonance ripples */}
               <div className="nerve-ripple ripple-1" aria-hidden="true" />
               <div className="nerve-ripple ripple-2" aria-hidden="true" />
@@ -411,14 +440,19 @@ export default function DeveloperIdentity() {
                   rel={mem.href ? "noreferrer" : undefined}
                   data-cursor={mem.href ? "hover" : undefined}
                   data-testid={mem.id === "dsa" ? "leetcode-node" : undefined}
-                  className={`nerve-memory nerve-memory-${mem.id} ${isActive ? "nerve-memory-active" : ""}`}
+                  className={`nerve-memory reactor-panel reactor-panel-${mem.id} nerve-depth-${mem.depth || "mid"} ${isActive ? "nerve-memory-active" : ""}`}
                   style={{ left: mem.x, top: mem.y }}
                   onMouseEnter={() => setActiveShard(mem.id)}
                   onMouseLeave={() => setActiveShard(null)}
                 >
-                  <span className="nerve-mem-whisper">{mem.whisper}</span>
-                  <strong className="nerve-mem-label">{mem.label}</strong>
-                  <small className="nerve-mem-diag">{mem.diagnostic || mem.metric}</small>
+                  <span className="nerve-mem-whisper">{mem.eyebrow || mem.whisper}</span>
+                  <strong className="nerve-mem-label">{mem.title || mem.label}</strong>
+                  <span className="reactor-panel-lines">
+                    {mem.points?.map((point) => (
+                      <small key={point}>{point}</small>
+                    ))}
+                  </span>
+                  <small className="nerve-mem-diag">{mem.whisper} // {mem.metric}</small>
                 </Tag>
               );
             })}

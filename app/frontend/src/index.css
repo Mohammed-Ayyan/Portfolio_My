@@ -1471,7 +1471,8 @@ body {
         linear-gradient(150deg, rgba(6, 6, 10, 0), rgba(6, 6, 10, 0.22));
     box-shadow: none;
     isolation: isolate;
-    perspective: 1100px;
+    perspective: 1250px;
+    transform-style: preserve-3d;
 }
 
 .sig-system::before,
@@ -1506,6 +1507,8 @@ body {
         radial-gradient(circle, rgba(245, 166, 35, 0.12), transparent 34%),
         radial-gradient(circle, rgba(217, 119, 54, 0.075), transparent 70%);
     filter: blur(62px);
+    left: var(--heart-x, 63%);
+    top: var(--heart-y, 46%);
     animation: nerve-bloom-heartbeat 6.8s cubic-bezier(0.45, 0, 0.2, 1) infinite;
 }
 
@@ -1580,8 +1583,8 @@ body {
 .nerve-heart-wrap {
     pointer-events: none;
     position: absolute;
-    left: 50%;
-    top: 50%;
+    left: var(--heart-x, 63%);
+    top: var(--heart-y, 46%);
     z-index: 6;
     display: grid;
     width: 250px;
@@ -1589,6 +1592,7 @@ body {
     place-items: center;
     transform: translate(-50%, -50%);
     filter: drop-shadow(0 0 58px rgba(217, 119, 54, 0.18));
+    animation: nerve-heart-drift 12s ease-in-out infinite alternate;
 }
 
 .nerve-heart-bloom,
@@ -1731,19 +1735,19 @@ body {
 .nerve-memory {
     position: absolute;
     z-index: 5;
-    width: clamp(118px, 16vw, 176px);
-    min-height: 82px;
+    width: clamp(94px, 13vw, 164px);
+    min-height: 68px;
     color: inherit;
     text-decoration: none;
-    padding: 1.15rem 0.95rem;
+    padding: 0.95rem 0.82rem;
     border: 0;
     border-radius: 46% 54% 58% 42% / 36% 44% 56% 64%;
     background:
         radial-gradient(ellipse 80% 58% at 40% 45%, rgba(217, 119, 54, 0.075), transparent 70%),
         radial-gradient(ellipse 70% 80% at 70% 60%, rgba(232, 232, 227, 0.018), transparent 74%);
     filter: drop-shadow(0 0 24px rgba(217, 119, 54, 0.055));
-    opacity: 0.84;
-    transform: translate3d(0, 0, 0) rotate(var(--tilt, -2deg));
+    opacity: 0.78;
+    transform: translate3d(0, 0, var(--z, 0px)) rotate(var(--tilt, -2deg)) scale(var(--scale, 1));
     transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s ease;
     animation: nerve-memory-drift 8.5s ease-in-out infinite alternate;
 }
@@ -1773,16 +1777,43 @@ body {
     transform: rotate(-10deg);
 }
 
-.nerve-memory-ui { --tilt: -5deg; animation-delay: -1s; }
-.nerve-memory-api { --tilt: 4deg; animation-delay: -3.2s; }
-.nerve-memory-db { --tilt: 3deg; animation-delay: -5s; }
-.nerve-memory-dsa { --tilt: -3deg; animation-delay: -2.4s; }
+.nerve-memory-ui { --tilt: -8deg; --scale: 1.02; animation-delay: -1s; }
+.nerve-memory-api { --tilt: 6deg; --scale: 0.84; animation-delay: -3.2s; }
+.nerve-memory-db { --tilt: 3deg; --scale: 0.94; animation-delay: -5s; }
+.nerve-memory-dsa { --tilt: -4deg; --scale: 1.08; animation-delay: -2.4s; }
+.nerve-memory-auth { --tilt: 9deg; --scale: 0.72; animation-delay: -6.3s; }
+.nerve-memory-deploy { --tilt: -7deg; --scale: 0.88; animation-delay: -4.7s; }
+.nerve-memory-cache { --tilt: 5deg; --scale: 0.68; animation-delay: -8.1s; }
+
+.nerve-depth-near {
+    --z: 56px;
+    z-index: 7;
+    opacity: 0.9;
+}
+
+.nerve-depth-mid {
+    --z: 12px;
+    z-index: 5;
+}
+
+.nerve-depth-far,
+.nerve-depth-ghost {
+    --z: -60px;
+    z-index: 4;
+    opacity: 0.48;
+    filter: blur(0.35px) drop-shadow(0 0 20px rgba(217, 119, 54, 0.05));
+}
+
+.nerve-depth-ghost {
+    opacity: 0.36;
+    mix-blend-mode: screen;
+}
 
 .nerve-memory:hover,
 .nerve-memory-active {
     opacity: 1;
     filter: drop-shadow(0 0 34px rgba(217, 119, 54, 0.22));
-    transform: translate3d(0, -7px, 0) scale(1.035) rotate(var(--tilt));
+    transform: translate3d(0, -7px, var(--z, 0px)) scale(calc(var(--scale, 1) * 1.055)) rotate(var(--tilt));
 }
 
 .nerve-mem-whisper {
@@ -1868,6 +1899,11 @@ body {
     54% { transform: scale(1.015); }
 }
 
+@keyframes nerve-heart-drift {
+    from { transform: translate(-50%, -50%) translate3d(-10px, 7px, 0); }
+    to { transform: translate(-50%, -50%) translate3d(12px, -8px, 0); }
+}
+
 @keyframes nerve-core-breathe {
     0%, 100% { opacity: 0.55; transform: scale(0.96); }
     50% { opacity: 0.95; transform: scale(1.08); }
@@ -1894,6 +1930,277 @@ body {
     0%, 100% { opacity: 0.08; transform: translate3d(0, 6px, 0); }
     38% { opacity: 0.34; transform: translate3d(7px, -4px, 0); }
     62% { opacity: 0.16; transform: translate3d(-4px, -9px, 0); }
+}
+
+/* Dense reactor composition, tuned to avoid expensive SVG motion */
+.sig-system {
+    min-height: 780px;
+    overflow: hidden;
+    border: 1px solid rgba(232, 232, 227, 0.08);
+    border-radius: 8px;
+    background:
+        radial-gradient(circle at 50% 52%, rgba(245, 166, 35, 0.17), transparent 11%),
+        radial-gradient(circle at 50% 52%, rgba(217, 119, 54, 0.11), transparent 25%),
+        radial-gradient(ellipse 80% 64% at 50% 46%, rgba(217, 119, 54, 0.045), transparent 72%),
+        linear-gradient(180deg, rgba(7, 7, 10, 0.96), rgba(2, 2, 4, 0.98));
+    box-shadow:
+        inset 0 0 0 1px rgba(217, 119, 54, 0.025),
+        inset 0 0 110px rgba(0, 0, 0, 0.72),
+        0 36px 90px rgba(0, 0, 0, 0.42);
+}
+
+.sig-system::before {
+    inset: 4%;
+    opacity: 0.38;
+    filter: none;
+    background:
+        linear-gradient(rgba(217, 119, 54, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(217, 119, 54, 0.035) 1px, transparent 1px),
+        radial-gradient(circle at 50% 52%, rgba(245, 166, 35, 0.22), transparent 18%);
+    background-size: 44px 44px, 44px 44px, 100% 100%;
+    mask-image: radial-gradient(ellipse 72% 64% at 50% 50%, black, transparent 78%);
+    animation: none;
+}
+
+.sig-system::after {
+    opacity: 0.52;
+    filter: none;
+    background:
+        radial-gradient(circle at 16% 48%, rgba(245, 166, 35, 0.12), transparent 9%),
+        radial-gradient(circle at 50% 52%, rgba(245, 166, 35, 0.16), transparent 22%),
+        repeating-linear-gradient(0deg, transparent 0 8px, rgba(217, 119, 54, 0.02) 9px, transparent 13px);
+    animation: reactor-air-shift 12s ease-in-out infinite alternate;
+}
+
+.sig-sys-bloom {
+    left: 50%;
+    top: 52%;
+    width: 430px;
+    height: 430px;
+    filter: blur(32px);
+    opacity: 0.78;
+    animation: reactor-bloom-lite 5.6s ease-in-out infinite;
+}
+
+.sig-sys-depth-fog,
+.nerve-ambient-haze {
+    filter: none;
+    opacity: 0.42;
+    animation-duration: 18s;
+}
+
+.sig-svg {
+    z-index: 4;
+}
+
+.nerve-fiber-haze {
+    filter: none;
+    stroke: rgba(245, 166, 35, 0.07);
+    stroke-width: 1.65;
+}
+
+.nerve-fiber {
+    stroke: rgba(245, 166, 35, 0.16) !important;
+    stroke-width: 0.42 !important;
+    filter: none;
+    animation: none;
+}
+
+.nerve-glow-line {
+    stroke: rgba(245, 166, 35, 0.44) !important;
+    stroke-width: 0.38 !important;
+    stroke-dasharray: 1.4 9 !important;
+    filter: none;
+    animation: reactor-line-crawl 9s linear infinite;
+}
+
+.reactor-synapse-dot {
+    filter: drop-shadow(0 0 5px rgba(245, 166, 35, 0.75));
+}
+
+.reactor-pulse-field {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+}
+
+.reactor-orb {
+    position: absolute;
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid rgba(245, 166, 35, 0.38);
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(245, 166, 35, 0.13), rgba(8, 8, 10, 0.72));
+    color: rgba(245, 166, 35, 0.88);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 28px rgba(245, 166, 35, 0.18);
+    animation: reactor-orb-breathe 4.8s ease-in-out infinite;
+}
+
+.nerve-heart-wrap {
+    left: 50%;
+    top: 52%;
+    width: 220px;
+    height: 220px;
+    animation: none;
+}
+
+.nerve-core {
+    width: 148px;
+    height: 148px;
+    background:
+        radial-gradient(circle at 50% 48%, rgba(245, 166, 35, 0.19), transparent 42%),
+        rgba(4, 4, 7, 0.86);
+    box-shadow:
+        0 0 42px rgba(245, 166, 35, 0.24),
+        0 0 110px rgba(217, 119, 54, 0.14),
+        inset 0 0 0 1px rgba(245, 166, 35, 0.38),
+        inset 0 0 36px rgba(217, 119, 54, 0.13);
+    animation: reactor-core-pulse-lite 4.8s ease-in-out infinite;
+}
+
+.nerve-ripple {
+    border-color: rgba(217, 119, 54, 0.18);
+    animation-duration: 6.6s;
+}
+
+.reactor-panel {
+    width: clamp(178px, 25vw, 300px);
+    min-height: 128px;
+    border-radius: 8px;
+    border: 1px solid rgba(217, 119, 54, 0.18);
+    padding: 1rem 1.05rem;
+    background:
+        linear-gradient(145deg, rgba(10, 9, 10, 0.88), rgba(4, 4, 6, 0.6)),
+        radial-gradient(circle at 82% 50%, rgba(217, 119, 54, 0.09), transparent 40%);
+    box-shadow:
+        0 0 0 1px rgba(232, 232, 227, 0.015),
+        0 0 34px rgba(217, 119, 54, 0.055),
+        inset 0 1px 0 rgba(232, 232, 227, 0.04);
+    backdrop-filter: blur(6px);
+    opacity: 0.92;
+    transform: translate3d(0, 0, 0) scale(var(--scale, 1));
+    animation: none;
+}
+
+.reactor-panel::before,
+.reactor-panel::after {
+    border-radius: inherit;
+    filter: none;
+    opacity: 0.36;
+}
+
+.reactor-panel::before {
+    inset: -1px;
+    background:
+        linear-gradient(90deg, rgba(245, 166, 35, 0.28), transparent 35%, transparent 65%, rgba(217, 119, 54, 0.14)),
+        linear-gradient(rgba(217, 119, 54, 0.06) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 28px;
+    mask-image: linear-gradient(black, black);
+}
+
+.reactor-panel::after {
+    display: none;
+}
+
+.reactor-panel-ui { --scale: 1; }
+.reactor-panel-api { --scale: 1; }
+.reactor-panel-db { --scale: 1.04; }
+.reactor-panel-dsa { --scale: 1.15; width: clamp(230px, 31vw, 360px); min-height: 160px; }
+.reactor-panel-auth { --scale: 0.86; width: clamp(170px, 22vw, 260px); }
+.reactor-panel-deploy { --scale: 0.82; width: clamp(150px, 19vw, 230px); }
+.reactor-panel-cache { --scale: 0.68; width: clamp(130px, 17vw, 205px); min-height: 104px; }
+
+.nerve-memory:hover,
+.nerve-memory-active {
+    transform: translate3d(0, -4px, 0) scale(calc(var(--scale, 1) * 1.02));
+    box-shadow:
+        0 0 0 1px rgba(245, 166, 35, 0.3),
+        0 0 44px rgba(245, 166, 35, 0.13);
+}
+
+.nerve-mem-whisper {
+    color: rgba(217, 119, 54, 0.8);
+    font-size: 8px;
+    letter-spacing: 0.17em;
+}
+
+.nerve-mem-label {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: rgba(248, 246, 240, 0.94);
+}
+
+.reactor-panel-lines {
+    display: grid;
+    gap: 0.42rem;
+    margin-top: 1rem;
+}
+
+.reactor-panel-lines small {
+    color: rgba(232, 232, 227, 0.52);
+    font-size: 0.72rem;
+    line-height: 1;
+}
+
+.nerve-mem-diag {
+    margin-top: 1.2rem;
+    color: rgba(232, 232, 227, 0.34);
+    font-size: 7px;
+}
+
+.nerve-depth-far,
+.nerve-depth-ghost {
+    opacity: 0.86;
+    filter: none;
+}
+
+.nerve-whisper {
+    opacity: 0.2;
+    animation-duration: 14s;
+}
+
+.dsa-organic-link,
+.dsa-organic-echo {
+    filter: none;
+    stroke-width: 0.34;
+}
+
+.sig-mote {
+    animation-duration: 34s !important;
+}
+
+@keyframes reactor-line-crawl {
+    from { stroke-dashoffset: 0; opacity: 0.48; }
+    50% { opacity: 0.82; }
+    to { stroke-dashoffset: -48; opacity: 0.48; }
+}
+
+@keyframes reactor-air-shift {
+    from { opacity: 0.34; transform: translate3d(-4px, 2px, 0); }
+    to { opacity: 0.55; transform: translate3d(5px, -3px, 0); }
+}
+
+@keyframes reactor-bloom-lite {
+    0%, 100% { opacity: 0.52; transform: translate(-50%, -50%) scale(0.98); }
+    50% { opacity: 0.82; transform: translate(-50%, -50%) scale(1.06); }
+}
+
+@keyframes reactor-core-pulse-lite {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.035); }
+}
+
+@keyframes reactor-orb-breathe {
+    0%, 100% { opacity: 0.66; transform: translate(-50%, -50%) scale(0.96); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); }
 }
 
 @keyframes identity-gradient {
@@ -2529,23 +2836,43 @@ body {
     }
 
     .nerve-memory-ui {
-        left: 2% !important;
-        top: 8% !important;
+        left: 5% !important;
+        top: 16% !important;
     }
 
     .nerve-memory-api {
-        left: 58% !important;
-        top: 9% !important;
+        left: 52% !important;
+        top: 6% !important;
     }
 
     .nerve-memory-db {
-        left: 5% !important;
-        top: 74% !important;
+        left: 17% !important;
+        top: 58% !important;
     }
 
     .nerve-memory-dsa {
-        left: 56% !important;
-        top: 70% !important;
+        left: 55% !important;
+        top: 43% !important;
+    }
+
+    .nerve-memory-auth {
+        left: 35% !important;
+        top: 30% !important;
+    }
+
+    .nerve-memory-deploy {
+        left: 47% !important;
+        top: 75% !important;
+    }
+
+    .nerve-memory-cache {
+        left: 2% !important;
+        top: 43% !important;
+    }
+
+    .nerve-heart-wrap {
+        left: 60%;
+        top: 48%;
     }
 
     .sig-reactor-wrap {
@@ -2619,5 +2946,84 @@ body {
         top: 72% !important;
         width: 43% !important;
         height: 22% !important;
+    }
+
+    .sig-system {
+        min-height: 880px;
+    }
+
+    .reactor-panel {
+        width: 46% !important;
+        min-height: 118px;
+        padding: 0.72rem;
+    }
+
+    .reactor-panel-lines {
+        gap: 0.28rem;
+        margin-top: 0.72rem;
+    }
+
+    .reactor-panel-lines small {
+        font-size: 0.62rem;
+    }
+
+    .reactor-panel-cache,
+    .reactor-panel-deploy {
+        width: 38% !important;
+        min-height: 92px;
+    }
+
+    .reactor-panel-ui {
+        left: 3% !important;
+        top: 6% !important;
+    }
+
+    .reactor-panel-api {
+        left: 51% !important;
+        top: 8% !important;
+    }
+
+    .reactor-panel-cache {
+        left: 1% !important;
+        top: 36% !important;
+    }
+
+    .reactor-panel-auth {
+        left: 60% !important;
+        top: 36% !important;
+        width: 38% !important;
+    }
+
+    .reactor-panel-db {
+        left: 4% !important;
+        top: 60% !important;
+    }
+
+    .reactor-panel-dsa {
+        left: 51% !important;
+        top: 60% !important;
+    }
+
+    .reactor-panel-deploy {
+        left: 31% !important;
+        top: 80% !important;
+    }
+
+    .nerve-heart-wrap {
+        left: 50%;
+        top: 50%;
+        width: 166px;
+        height: 166px;
+    }
+
+    .nerve-core {
+        width: 108px;
+        height: 108px;
+    }
+
+    .reactor-orb {
+        width: 30px;
+        height: 30px;
+        font-size: 6px;
     }
 }
