@@ -12,7 +12,7 @@ const neuralMemories = [
     telemetry: "RENDER_FLOW",
     desc: "CLIENT ENGINE",
     metric: "32ms",
-    x: "6%", y: "8%",
+    x: "4%", y: "13%",
   },
   {
     id: "api",
@@ -21,7 +21,7 @@ const neuralMemories = [
     telemetry: "REST_ACTIVE",
     desc: "NODE ORCHESTRATOR",
     metric: "8ms",
-    x: "68%", y: "10%",
+    x: "71%", y: "7%",
   },
   {
     id: "db",
@@ -30,7 +30,7 @@ const neuralMemories = [
     telemetry: "PIPELINE_OK",
     desc: "MONGO SECURE",
     metric: "14ms",
-    x: "4%", y: "72%",
+    x: "9%", y: "74%",
   },
   {
     id: "dsa",
@@ -39,7 +39,7 @@ const neuralMemories = [
     telemetry: "RESONANCE",
     desc: "OPTIMAL SOLVER",
     metric: "O(log n)",
-    x: "62%", y: "70%",
+    x: "67%", y: "67%",
     href: "https://leetcode.com/u/ZasFksu4HE/",
   },
 ];
@@ -49,33 +49,36 @@ const memoryConfig = neuralMemories.reduce((acc, m) => { acc[m.id] = m; return a
 /* ─── Organic Branching Neural Pathways ──────────────────────────── */
 const neuralPaths = [
   // Primary fibers: each memory → core
-  { from: "ui",  d: "M 14 16 C 18 28, 30 36, 50 50" },
-  { from: "api", d: "M 82 18 C 74 30, 62 40, 50 50" },
-  { from: "db",  d: "M 18 80 C 24 68, 36 58, 50 50" },
-  { from: "dsa", d: "M 76 78 C 68 68, 58 58, 50 50" },
+  { from: "ui", d: "M 10 21 C 17 25, 18 34, 28 37 C 38 41, 38 48, 50 50" },
+  { from: "ui", d: "M 12 24 C 8 33, 15 40, 21 46 C 27 52, 35 51, 42 56" },
+  { from: "ui", d: "M 9 19 C 18 13, 28 19, 36 16 C 43 14, 45 20, 51 22" },
+  { from: "api", d: "M 82 16 C 76 24, 72 27, 66 35 C 61 42, 56 43, 50 50" },
   // Branching sub-fibers (asymmetric splits)
-  { from: "ui",  d: "M 14 16 C 22 20, 28 18, 38 22" },
-  { from: "ui",  d: "M 14 16 C 10 26, 16 34, 22 42" },
-  { from: "api", d: "M 82 18 C 86 28, 82 36, 74 42" },
-  { from: "api", d: "M 82 18 C 72 16, 64 20, 58 28" },
-  { from: "db",  d: "M 18 80 C 14 70, 18 62, 26 56" },
-  { from: "db",  d: "M 18 80 C 28 84, 38 80, 44 74" },
-  { from: "dsa", d: "M 76 78 C 82 70, 84 62, 78 54" },
-  { from: "dsa", d: "M 76 78 C 66 82, 56 78, 50 72" },
+  { from: "api", d: "M 83 18 C 89 29, 83 38, 75 43 C 67 48, 64 55, 56 57" },
+  { from: "api", d: "M 79 14 C 70 12, 63 18, 58 27 C 53 34, 48 34, 42 39" },
+  { from: "db", d: "M 20 82 C 24 71, 19 62, 29 57 C 38 52, 41 55, 50 50" },
+  { from: "db", d: "M 17 79 C 29 83, 36 76, 43 72 C 50 68, 49 60, 57 56" },
+  { from: "db", d: "M 21 84 C 16 73, 12 66, 19 58 C 24 51, 19 45, 25 39" },
+  { from: "dsa", d: "M 78 75 C 70 72, 69 64, 62 61 C 56 58, 56 53, 50 50" },
+  { from: "dsa", d: "M 77 76 C 85 67, 83 56, 75 52 C 68 49, 66 42, 58 39" },
+  { from: "dsa", d: "M 75 73 C 66 82, 58 77, 52 72 C 46 67, 41 70, 35 64" },
   // Cross-connections (synaptic bridges)
-  { from: null, d: "M 38 22 C 44 26, 52 24, 58 28" },
-  { from: null, d: "M 22 42 C 24 48, 26 52, 26 56" },
-  { from: null, d: "M 74 42 C 76 48, 78 52, 78 54" },
-  { from: null, d: "M 44 74 C 48 74, 50 72, 50 72" },
+  { from: null, d: "M 36 16 C 43 27, 52 23, 58 27 C 67 33, 67 41, 75 43" },
+  { from: null, d: "M 21 46 C 29 44, 34 49, 42 56 C 49 63, 50 66, 43 72" },
+  { from: null, d: "M 25 39 C 34 34, 39 38, 42 39 C 49 41, 51 34, 58 39" },
+  { from: null, d: "M 57 56 C 64 60, 68 57, 75 52 C 80 49, 83 52, 87 59" },
+  { from: null, d: "M 35 64 C 43 61, 50 64, 56 57 C 62 50, 68 50, 75 52" },
+  { from: null, d: "M 51 22 C 47 30, 54 35, 50 43 C 47 48, 48 51, 50 50" },
 ];
 
 /* ─── Synapse Junction Points ────────────────────────────────────── */
 const synapseJunctions = [
   { cx: 50, cy: 50, r: 1.4, primary: true },
-  { cx: 38, cy: 22, r: 0.8 }, { cx: 58, cy: 28, r: 0.8 },
-  { cx: 22, cy: 42, r: 0.7 }, { cx: 74, cy: 42, r: 0.7 },
-  { cx: 26, cy: 56, r: 0.7 }, { cx: 78, cy: 54, r: 0.7 },
-  { cx: 44, cy: 74, r: 0.7 }, { cx: 50, cy: 72, r: 0.6 },
+  { cx: 36, cy: 16, r: 0.75 }, { cx: 58, cy: 27, r: 0.8 },
+  { cx: 21, cy: 46, r: 0.65 }, { cx: 75, cy: 43, r: 0.72 },
+  { cx: 42, cy: 56, r: 0.65 }, { cx: 75, cy: 52, r: 0.7 },
+  { cx: 43, cy: 72, r: 0.68 }, { cx: 57, cy: 56, r: 0.62 },
+  { cx: 25, cy: 39, r: 0.55 }, { cx: 87, cy: 59, r: 0.5 },
 ];
 
 /* ─── Floating Computational Whispers ────────────────────────────── */
@@ -87,6 +90,9 @@ const whispers = [
   { text: "REQ → 200", x: "44%", y: "18%" },
   { text: "idx.scan()", x: "28%", y: "86%" },
   { text: "O(n log n)", x: "84%", y: "82%" },
+  { text: "heap.relax()", x: "56%", y: "84%" },
+  { text: "jwt.verify", x: "5%", y: "44%" },
+  { text: "hydrate()", x: "58%", y: "18%" },
 ];
 
 export default function DeveloperIdentity() {
@@ -239,7 +245,7 @@ export default function DeveloperIdentity() {
                 return (
                   <g key={`fiber-${idx}`}>
                     {/* Ghost trace */}
-                    <path d={fiber.d} fill="none" stroke="rgba(217,119,54,0.02)" strokeWidth="1.8" />
+                    <path d={fiber.d} fill="none" stroke="rgba(217,119,54,0.018)" strokeWidth="2.4" className="nerve-fiber-haze" />
                     {/* Fiber body */}
                     <path
                       d={fiber.d} fill="none"
@@ -252,7 +258,7 @@ export default function DeveloperIdentity() {
                       d={fiber.d} fill="none"
                       stroke={isActive ? "rgba(217,119,54,0.6)" : "rgba(217,119,54,0.06)"}
                       strokeWidth={isActive ? "0.9" : "0.2"}
-                      strokeDasharray={isActive ? "3 5" : "6 14"}
+                      strokeDasharray={isActive ? "2.8 5.6" : "4 15 1 8"}
                       strokeLinecap="round"
                       className="nerve-glow-line"
                       filter={isActive ? "url(#sig-glow)" : "url(#nerve-soft)"}
@@ -284,6 +290,17 @@ export default function DeveloperIdentity() {
                         />
                       </circle>
                     )}
+                    {!isBridge && idx % 2 === 0 && (
+                      <circle r={isActive ? "0.75" : "0.32"} fill="#D97736" opacity={isActive ? "0.75" : "0.16"}>
+                        <animateMotion
+                          dur={isActive ? "1.45s" : `${5.8 + idx * 0.18}s`}
+                          repeatCount="indefinite"
+                          path={fiber.d}
+                          begin={`${idx * 0.23 + 0.85}s`}
+                        />
+                        <animate attributeName="opacity" values="0;0.55;0.12;0" dur={isActive ? "1.45s" : `${5.8 + idx * 0.18}s`} repeatCount="indefinite" />
+                      </circle>
+                    )}
                   </g>
                 );
               })}
@@ -306,23 +323,21 @@ export default function DeveloperIdentity() {
 
               {/* ═══ DSA CONSTELLATION (open subnet) ═══ */}
               <g className="dsa-constellation" filter="url(#nerve-soft)">
-                <line x1="70" y1="74" x2="64" y2="80" stroke="rgba(217,119,54,0.12)" strokeWidth="0.4" />
-                <line x1="70" y1="74" x2="78" y2="82" stroke="rgba(217,119,54,0.12)" strokeWidth="0.4" />
-                <line x1="64" y1="80" x2="58" y2="86" stroke="rgba(217,119,54,0.08)" strokeWidth="0.3" />
-                <line x1="64" y1="80" x2="68" y2="88" stroke="rgba(217,119,54,0.08)" strokeWidth="0.3" />
-                <line x1="78" y1="82" x2="74" y2="90" stroke="rgba(217,119,54,0.08)" strokeWidth="0.3" />
-                <line x1="78" y1="82" x2="84" y2="88" stroke="rgba(217,119,54,0.08)" strokeWidth="0.3" />
-                {/* constellation pads */}
-                <circle cx="70" cy="74" r="0.9" fill="#D97736" opacity="0.6" />
-                <circle cx="64" cy="80" r="0.7" fill="#D97736" opacity="0.4" />
-                <circle cx="78" cy="82" r="0.7" fill="#D97736" opacity="0.4" />
-                <circle cx="58" cy="86" r="0.5" fill="#D97736" opacity="0.25" />
-                <circle cx="68" cy="88" r="0.5" fill="#D97736" opacity="0.25" />
-                <circle cx="74" cy="90" r="0.6" fill="#F5A623" opacity="0.7" />
-                <circle cx="84" cy="88" r="0.5" fill="#D97736" opacity="0.25" />
+                <path d="M 70 74 C 66 76, 66 79, 64 80 C 61 82, 61 85, 58 86" className="dsa-organic-link" />
+                <path d="M 70 74 C 75 75, 75 80, 78 82 C 82 84, 81 88, 84 88" className="dsa-organic-link" />
+                <path d="M 64 80 C 66 83, 66 86, 68 88" className="dsa-organic-link dsa-organic-link-soft" />
+                <path d="M 78 82 C 75 84, 76 88, 74 90" className="dsa-organic-link dsa-organic-link-hot" />
+                <path d="M 58 86 C 62 91, 70 92, 74 90 C 79 88, 80 84, 84 88" className="dsa-organic-echo" />
+                {[
+                  [70, 74, 0.9, 0.62], [64, 80, 0.72, 0.42], [78, 82, 0.7, 0.42],
+                  [58, 86, 0.48, 0.25], [68, 88, 0.48, 0.28], [74, 90, 0.65, 0.72],
+                  [84, 88, 0.48, 0.25], [62, 91, 0.32, 0.18], [81, 78, 0.28, 0.16],
+                ].map(([cx, cy, r, opacity]) => (
+                  <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={r} fill={cx === 74 ? "#F5A623" : "#D97736"} opacity={opacity} />
+                ))}
                 {/* search pulse through tree */}
                 <circle r="0.7" fill="#F5A623" opacity="0" filter="url(#sig-glow)">
-                  <animateMotion dur="4.2s" repeatCount="indefinite" path="M 70 74 L 78 82 L 74 90" />
+                  <animateMotion dur="4.2s" repeatCount="indefinite" path="M 70 74 C 75 75, 75 80, 78 82 C 75 84, 76 88, 74 90" />
                   <animate attributeName="opacity" values="0;0.9;0.9;0" dur="4.2s" repeatCount="indefinite" keyTimes="0;0.1;0.75;1" />
                 </circle>
                 {/* target ripple */}
