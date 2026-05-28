@@ -8,6 +8,7 @@ const MagneticButton = forwardRef(function MagneticButton(
     children,
     className = "",
     onClick,
+    as: Component = "button",
     type = "button",
     variant = "outline",
     strength = 18,
@@ -36,9 +37,9 @@ const MagneticButton = forwardRef(function MagneticButton(
   };
 
   return (
-    <button
+    <Component
       ref={btnRef}
-      type={type}
+      {...(Component === "button" ? { type } : {})}
       onClick={onClick}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
@@ -47,7 +48,7 @@ const MagneticButton = forwardRef(function MagneticButton(
       {...props}
     >
       <span className="relative z-10">{children}</span>
-    </button>
+    </Component>
   );
 });
 

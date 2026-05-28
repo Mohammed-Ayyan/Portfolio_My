@@ -5,10 +5,10 @@ import MagneticButton from "@/components/MagneticButton";
 import Scene3D from "@/components/Scene3D";
 
 const headlineLines = [
-  ["Crafting", "immersive"],
-  ["digital", "experiences"],
-  ["through", "motion"],
-  ["and", "code."],
+  ["Building", "scalable"],
+  ["MERN", "stack"],
+  ["experiences"],
+  ["with", "cinematic", "UI."],
 ];
 
 export default function Hero() {
@@ -34,7 +34,7 @@ export default function Hero() {
 
       <div className="absolute left-0 right-0 top-24 z-20 flex justify-between px-6 font-mono text-[10px] uppercase tracking-[0.3em] text-[#8A8A93] sm:px-10 lg:px-14">
         <motion.span initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.35 }}>
-          Mohammed Ayyan / Frontend
+          Mohammed Ayyan / MERN Stack
         </motion.span>
         <motion.span initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.5 }} className="hidden sm:inline-block">
           Motion / Interaction / Engineering
@@ -49,19 +49,19 @@ export default function Hero() {
           className="mb-6 flex max-w-4xl items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[#D97736]"
         >
           <span className="h-px w-8 bg-[#D97736]" />
-          Creative Frontend Developer / Interactive Web Engineer / Motion Experience Designer
+          MERN Stack Developer / Full-Stack Engineer / Motion-Led UI
         </motion.div>
 
         <h1
           ref={headlineRef}
           data-testid="hero-headline"
-          className="max-w-[1120px] font-display text-[clamp(3rem,6.2vw,7.15rem)] font-black uppercase leading-[0.9] text-[#F2F0EA]"
+          className="max-w-[1180px] font-display text-[clamp(2.85rem,6vw,6.8rem)] font-black uppercase leading-[0.9] text-[#F2F0EA]"
         >
           {headlineLines.map((line, lineIndex) => (
             <span key={line.join("-")} className="block">
               {line.map((word, wordIndex) => {
                 const index = lineIndex * 2 + wordIndex;
-                const highlighted = ["immersive", "motion", "code."].includes(word);
+                const highlighted = ["scalable", "MERN", "cinematic"].includes(word);
                 return (
                   <span key={word} className="reveal-word mr-[0.14em]">
                     <span style={{ transitionDelay: `${0.42 + index * 0.055}s` }}>
@@ -85,10 +85,9 @@ export default function Hero() {
             transition={{ duration: 0.9, delay: 1.0 }}
             className="max-w-2xl text-base font-light leading-relaxed text-[#B8B6AF] sm:text-lg"
           >
-            Frontend developer specializing in cinematic web experiences,
-            immersive interaction systems, and modern digital craftsmanship using
-            technologies like Next.js, React, Three.js, GSAP, Framer Motion, and
-            advanced animation workflows.
+            MERN Stack Developer crafting scalable full-stack experiences with
+            modern UI engineering, backend architecture, authentication, APIs,
+            MongoDB data models, and performance-focused deployment workflows.
           </motion.p>
 
           <motion.div
@@ -98,7 +97,7 @@ export default function Hero() {
             className="flex flex-wrap items-center gap-4"
           >
             <MagneticButton onClick={() => scrollTo("projects")} variant="solid" data-testid="hero-cta-projects" data-cursor-label="Explore">
-              View Projects
+              View Full-Stack Work
               <ArrowUpRight size={16} weight="light" />
             </MagneticButton>
             <MagneticButton onClick={() => scrollTo("contact")} data-testid="hero-cta-contact" data-cursor-label="Write">

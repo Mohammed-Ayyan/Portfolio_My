@@ -4,33 +4,33 @@ import { AnimatePresence, motion } from "framer-motion";
 const categories = [
   {
     id: "frontend",
-    label: "Frontend Development",
-    tools: ["React", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "Responsive UI"],
-    note: "Component systems, polished interfaces, accessibility-minded layouts, and performance-aware implementation.",
-  },
-  {
-    id: "motion",
-    label: "Animation & Motion",
-    tools: ["GSAP", "ScrollTrigger", "Framer Motion", "Lenis", "Timeline Design", "Micro-interactions"],
-    note: "Motion systems that guide attention, create pacing, and make the interface feel cinematic without becoming loud.",
-  },
-  {
-    id: "interactive",
-    label: "3D & Interactive Development",
-    tools: ["Three.js", "React Three Fiber", "WebGL Concepts", "Parallax", "Interactive Scenes"],
-    note: "Lightweight depth, spatial interaction, and atmospheric presentation for immersive product moments.",
-  },
-  {
-    id: "design",
-    label: "UI/UX & Design",
-    tools: ["Figma", "Visual Hierarchy", "Design Systems", "Editorial Layout", "Prototyping"],
-    note: "Layouts shaped around readability, storytelling, premium spacing, and emotionally engaging flows.",
+    label: "Frontend Engineering",
+    tools: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Responsive UI", "Performance UX"],
+    note: "Component systems, polished interfaces, accessibility-minded layouts, and GPU-friendly motion that stays readable.",
   },
   {
     id: "backend",
-    label: "Backend Familiarity",
-    tools: ["FastAPI", "Node APIs", "MongoDB", "Authentication Basics", "Data Modeling"],
-    note: "Enough backend fluency to collaborate cleanly, reason about API contracts, and build complete product flows.",
+    label: "Backend & APIs",
+    tools: ["Node.js", "Express.js", "REST APIs", "Authentication", "JWT", "OAuth"],
+    note: "API design, route protection, auth flows, validation, server logic, and backend contracts that support real products.",
+  },
+  {
+    id: "database",
+    label: "Database Layer",
+    tools: ["MongoDB", "Mongoose", "Schemas", "Relationships", "Aggregation", "Indexes"],
+    note: "Data modeling, schema rules, query thinking, and MongoDB structures for scalable application state.",
+  },
+  {
+    id: "deployment",
+    label: "Deployment & Tools",
+    tools: ["GitHub", "Vercel", "Render", "Firebase", "Postman", "Environment Config"],
+    note: "Production workflow awareness: testing APIs, managing environment variables, deploying services, and debugging releases.",
+  },
+  {
+    id: "motion",
+    label: "Motion & Experience",
+    tools: ["GSAP", "ScrollTrigger", "Lenis", "Micro-interactions", "Scroll Pacing", "Cinematic UI"],
+    note: "Motion systems that guide attention, create atmosphere, and make full-stack products feel premium without becoming noisy.",
   },
 ];
 
@@ -51,15 +51,15 @@ export default function Skills() {
               Craft / Systems
             </div>
             <h2 className="font-display text-5xl font-bold uppercase leading-[0.95] text-[#F2F0EA] sm:text-6xl">
-              A refined stack for expressive frontend work.
+              A full-stack stack with cinematic frontend taste.
             </h2>
           </div>
 
           <div className="lg:col-span-6 lg:col-start-7">
             <p className="max-w-2xl text-base leading-relaxed text-[#A9A69F] sm:text-lg">
-              Skills are grouped as working systems, not progress bars. The focus
-              is on how each discipline contributes to immersive, responsive, and
-              story-driven digital experiences.
+              Skills are grouped as production systems, not icon lists. The stack
+              connects interface craft with APIs, authentication, MongoDB data,
+              deployment, and performance-minded product thinking.
             </p>
             <div className="mt-8 flex flex-wrap gap-2">
               {categories.map((category) => (
@@ -131,12 +131,11 @@ export default function Skills() {
               Skill Orbit / Interactive Map
             </div>
             <h3 className="font-display text-4xl font-semibold uppercase leading-[0.95] text-[#E8E8E3] sm:text-5xl">
-              A solar system of frontend craft.
+              A solar system of full-stack craft.
             </h3>
             <p className="mt-6 max-w-md text-base leading-relaxed text-[#A9A69F]">
-              Each orbit groups the tools around a discipline, showing how motion,
-              interface design, 3D depth, and backend fluency support the core
-              frontend experience.
+              Each orbit groups technologies around a product layer, showing how
+              frontend, backend, database, and deployment decisions work together.
             </p>
           </div>
 
@@ -161,19 +160,19 @@ function SkillOrbit() {
       label: "Frontend",
       className: "orbit-layer orbit-layer-1",
       offset: 0,
-      skills: ["React", "Next.js", "TypeScript", "Tailwind"],
+      skills: ["React", "Next.js", "Tailwind", "Motion"],
     },
     {
-      label: "Motion",
+      label: "Backend",
       className: "orbit-layer orbit-layer-2",
       offset: 45,
-      skills: ["GSAP", "Framer", "Lenis", "ScrollTrigger"],
+      skills: ["Node", "Express", "JWT", "REST"],
     },
     {
-      label: "Spatial",
+      label: "Data",
       className: "orbit-layer orbit-layer-3",
       offset: 22,
-      skills: ["Three.js", "R3F", "WebGL", "Depth"],
+      skills: ["MongoDB", "Mongoose", "Vercel", "Render"],
     },
   ];
 

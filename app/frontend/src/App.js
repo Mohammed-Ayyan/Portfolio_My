@@ -7,6 +7,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Cursor from "@/components/Cursor";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import DeveloperIdentity from "@/components/DeveloperIdentity";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
@@ -17,7 +18,7 @@ import GrainOverlay from "@/components/GrainOverlay";
 
 const Portfolio = () => {
   useEffect(() => {
-    document.title = "Mohammed Ayyan | Cinematic Frontend Developer";
+    document.title = "Mohammed Ayyan | MERN Stack Developer";
   }, []);
 
   useEffect(() => {
@@ -54,6 +55,7 @@ const Portfolio = () => {
         <Navbar />
         <main className="relative z-10">
           <Hero />
+          <DeveloperIdentity />
           <About />
           <Projects />
           <Skills />

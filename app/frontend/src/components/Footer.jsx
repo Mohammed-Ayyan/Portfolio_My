@@ -12,12 +12,12 @@ export default function Footer() {
             <span className="h-1.5 w-1.5 bg-[#D97736]" />
           </span>
           <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8A8A93]">
-            Mohammed Ayyan / Cinematic frontend portfolio / {year}
+            Mohammed Ayyan / Cinematic MERN stack portfolio / {year}
           </span>
         </div>
         <div className="flex flex-col gap-2 font-mono text-[10px] uppercase tracking-[0.28em] text-[#8A8A93] sm:flex-row sm:gap-8">
-          <span>React + GSAP + Framer Motion</span>
-          <span>Motion / Interaction / Code</span>
+          <span>React + Node + Express + MongoDB</span>
+          <span>APIs / Auth / Motion / Deployment</span>
         </div>
       </div>
     </footer>

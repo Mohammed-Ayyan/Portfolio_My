@@ -15,7 +15,7 @@ export default function Experience() {
               Experience / Internship
             </div>
             <h2 className="font-display text-5xl font-bold uppercase leading-[0.95] text-[#F2F0EA] sm:text-6xl">
-              Backend thinking that strengthens frontend craft.
+            Backend experience that strengthens full-stack product thinking.
             </h2>
           </div>
 
@@ -32,9 +32,9 @@ export default function Experience() {
               Backend Developer Intern
             </h3>
             <p className="mt-6 text-base leading-relaxed text-[#A9A69F]">
-              Worked with backend concepts, API structures, and data handling
-              patterns while learning how stable server-side systems support
-              polished product experiences.
+              Worked with backend concepts, API structures, database thinking,
+              and data handling patterns while learning how stable server-side
+              systems support polished product experiences.
             </p>
 
             <div className="mt-10 grid gap-px bg-[#E8E8E3]/10 sm:grid-cols-3">
@@ -45,7 +45,7 @@ export default function Experience() {
                 },
                 {
                   title: "Responsibilities",
-                  text: "Worked around APIs, server logic, database thinking, and debugging practices.",
+                  text: "Worked around APIs, server logic, database structures, auth-aware routes, and debugging practices.",
                 },
                 {
                   title: "Key learnings",

@@ -76,9 +76,10 @@ export default function Contact() {
             unforgettable together.
           </motion.h2>
           <p className="mx-auto mt-8 max-w-2xl text-base font-light leading-relaxed text-[#A9A69F] sm:text-lg">
-            Creating immersive digital experiences through motion, interaction,
-            and engineering. Open to collaborations, creative projects, and
-            innovative digital experiences.
+            Creating scalable MERN stack products through backend architecture,
+            APIs, MongoDB, authentication, motion, interaction, and engineering.
+            Open to collaborations, creative products, and production-ready web
+            applications.
           </p>
         </div>
 

@@ -6,16 +6,16 @@ const portrait =
 
 const story = [
   {
-    overline: "01 / Cinematic interaction",
-    text: "I design interfaces as sequences, not screens. Every reveal, hover, transition, and scroll moment is paced to make the experience feel intentional and alive.",
+    overline: "01 / Product architecture",
+    text: "I think through the full product path: interface states, API contracts, authentication rules, data models, and deployment constraints before the UI ever feels finished.",
   },
   {
-    overline: "02 / Frontend engineering",
-    text: "I build with React, Next.js-style architecture, animation systems, responsive layouts, and performance-minded component patterns that keep expressive work usable.",
+    overline: "02 / MERN engineering",
+    text: "I build with React, Node.js, Express, MongoDB, authentication patterns, REST APIs, and performance-minded component systems that keep expressive work usable.",
   },
   {
-    overline: "03 / Emotional systems",
-    text: "The goal is not decoration. It is a digital atmosphere where storytelling, clarity, and motion work together to make products feel memorable.",
+    overline: "03 / Experience quality",
+    text: "The goal is not decoration. It is scalable software with a cinematic surface: fast, readable, responsive, reliable, and memorable.",
   },
 ];
 
@@ -41,7 +41,7 @@ export default function About() {
             <div className="about-portrait relative aspect-[3/4] w-full overflow-hidden border border-[#E8E8E3]/10 bg-[#101014]">
               <img
                 src={portrait}
-                alt="Cinematic portrait silhouette representing Mohammed Ayyan's creative frontend practice"
+                alt="Cinematic portrait of Mohammed Ayyan"
                 data-testid="about-portrait"
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover object-center grayscale contrast-125 brightness-[0.72]"
@@ -86,8 +86,8 @@ export default function About() {
             className="font-display text-4xl font-bold leading-[1.02] text-[#F2F0EA] sm:text-5xl lg:text-6xl"
           >
             Working at the intersection of{" "}
-            <span className="text-[#D97736]">code</span>, motion, and immersive
-            storytelling.
+            <span className="text-[#D97736]">full-stack</span> architecture,
+            motion, and product experience.
           </motion.h2>
 
           <motion.p
@@ -97,9 +97,9 @@ export default function About() {
             transition={{ duration: 0.95, delay: 0.08, ease: [0.77, 0, 0.175, 1] }}
             className="mt-10 max-w-3xl text-base leading-relaxed text-[#A9A69F] sm:text-lg"
           >
-            Mohammed Ayyan builds immersive frontend experiences where modern
-            engineering, cinematic motion, storytelling, and interaction design
-            merge into polished digital products.
+            Mohammed Ayyan builds immersive MERN stack applications where
+            backend logic, MongoDB data, authentication, API design, cinematic
+            motion, and interaction design merge into polished digital products.
           </motion.p>
 
           <div className="mt-16 space-y-10">
