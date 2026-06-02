@@ -1,7 +1,7 @@
-import { forwardRef, useRef } from "react";
+import { forwardRef, useCallback, useEffect, useRef } from "react";
 
 /**
- * Magnetic button with subtle pull toward cursor + sweep fill.
+ * Magnetic button with a generous cursor pull + sweep fill.
  */
 const MagneticButton = forwardRef(function MagneticButton(
   {
@@ -11,38 +11,84 @@ const MagneticButton = forwardRef(function MagneticButton(
     as: Component = "button",
     type = "button",
     variant = "outline",
-    strength = 18,
+    strength = 38,
+    radius = 190,
     ...props
   },
   ref
 ) {
-  const localRef = useRef(null);
-  const btnRef = ref || localRef;
+  const btnRef = useRef(null);
+  const frameRef = useRef(null);
 
-  const handleMove = (e) => {
+  const setRefs = useCallback(
+    (node) => {
+      btnRef.current = node;
+      if (typeof ref === "function") {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+    },
+    [ref]
+  );
+
+  useEffect(() => {
     const el = btnRef.current;
     if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    el.style.transform = `translate3d(${(x / rect.width) * strength}px, ${
-      (y / rect.height) * strength
-    }px, 0)`;
-  };
 
-  const handleLeave = () => {
-    const el = btnRef.current;
-    if (!el) return;
-    el.style.transform = "translate3d(0,0,0)";
-  };
+    const move = (e) => {
+      if (frameRef.current) return;
+      frameRef.current = window.requestAnimationFrame(() => {
+        frameRef.current = null;
+        const rect = el.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const dx = e.clientX - centerX;
+        const dy = e.clientY - centerY;
+        const distance = Math.hypot(dx, dy);
+        const magneticRadius = Math.max(radius, rect.width * 0.9);
+
+        if (distance > magneticRadius) {
+          el.style.setProperty("--magnetic-x", "0px");
+          el.style.setProperty("--magnetic-y", "0px");
+          el.style.setProperty("--magnetic-scale", "1");
+          return;
+        }
+
+        const pull = 1 - distance / magneticRadius;
+        const directionX = distance ? dx / distance : 0;
+        const directionY = distance ? dy / distance : 0;
+        const lift = 1 + pull * 0.045;
+
+        el.style.setProperty("--magnetic-x", `${directionX * strength * pull}px`);
+        el.style.setProperty("--magnetic-y", `${directionY * strength * pull}px`);
+        el.style.setProperty("--magnetic-scale", lift.toFixed(3));
+      });
+    };
+
+    const reset = () => {
+      el.style.setProperty("--magnetic-x", "0px");
+      el.style.setProperty("--magnetic-y", "0px");
+      el.style.setProperty("--magnetic-scale", "1");
+    };
+
+    window.addEventListener("pointermove", move, { passive: true });
+    window.addEventListener("pointerleave", reset);
+
+    return () => {
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerleave", reset);
+      if (frameRef.current) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
+    };
+  }, [radius, strength]);
 
   return (
     <Component
-      ref={btnRef}
+      ref={setRefs}
       {...(Component === "button" ? { type } : {})}
       onClick={onClick}
-      onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
       data-cursor="hover"
       className={`btn-magnetic ${variant === "solid" ? "solid" : ""} ${className}`}
       {...props}

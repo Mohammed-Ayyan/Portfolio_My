@@ -9,10 +9,10 @@ const projects = [
   {
     id: "appointment",
     n: "01",
-    title: "Immersive Appointment Booking Platform",
+    title: "MERN Appointment Booking Platform",
     role: "MERN Product Build / Booking Workflow",
     description:
-      "A production-style scheduling platform that turns services, availability, booking, and confirmation into one guided flow.",
+      "A production-style MERN scheduling platform that turns services, availability, booking, and confirmation into one guided full-stack flow.",
     problem: "Manual appointment handling creates missed leads, unclear availability, and slow customer follow-up.",
     backend: "Express REST APIs, protected booking routes, validation, and admin-ready service endpoints.",
     database: "MongoDB collections for services, time slots, bookings, customers, and booking status history.",
@@ -28,10 +28,10 @@ const projects = [
   {
     id: "real-estate",
     n: "02",
-    title: "Interactive Real Estate Experience",
+    title: "Full-Stack Real Estate Listing Platform",
     role: "Full-Stack Listing Platform / Motion UI",
     description:
-      "A premium property discovery experience with cinematic listing previews, search filters, lead capture, and detail pages.",
+      "A premium full-stack property discovery experience with cinematic listing previews, search filters, lead capture, and detail pages.",
     problem: "Real estate discovery often feels static, overloaded, and disconnected from the buyer journey.",
     backend: "REST endpoints for listings, filters, saved properties, lead capture, and admin listing management.",
     database: "MongoDB listing schema with price, location, media, amenities, availability, and lead records.",
@@ -47,10 +47,10 @@ const projects = [
   {
     id: "security",
     n: "03",
-    title: "Encryption & Security Toolkit",
+    title: "Node.js Encryption & Security Toolkit",
     role: "Security Utility / Backend Logic",
     description:
-      "A focused developer toolkit for hashing, token inspection, encryption demos, and security workflow validation.",
+      "A focused Node.js developer toolkit for hashing, JWT inspection, encryption demos, and security workflow validation.",
     problem: "Security utilities are often scattered or too technical for quick validation during development.",
     backend: "Node utility endpoints for hashing, token validation patterns, and error-safe responses.",
     database: "Optional MongoDB audit records for saved operations, timestamps, and user-owned sessions.",
@@ -66,10 +66,10 @@ const projects = [
   {
     id: "waste-tracker",
     n: "04",
-    title: "Waste Reduction Tracker",
+    title: "MERN Waste Reduction Tracker",
     role: "MERN Dashboard / Data Experience",
     description:
-      "A sustainability dashboard that helps users track reduction habits, visualize progress, and build measurable outcomes.",
+      "A MERN sustainability dashboard that helps users track reduction habits, visualize progress, and build measurable outcomes.",
     problem: "Habit data becomes meaningless without clear feedback, goal context, and lightweight progress tracking.",
     backend: "Express APIs for entries, goals, summaries, authenticated history updates, and category data.",
     database: "MongoDB models for users, entries, categories, targets, and monthly aggregate snapshots.",
@@ -126,15 +126,16 @@ export default function Projects() {
           <div className="lg:col-span-7">
             <div className="mb-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
               <span className="h-px w-10 bg-[#D97736]" />
-              Selected Work / Full-Stack Case Studies
+              MERN Projects / Full-Stack Case Studies
             </div>
             <h2 className="font-display text-5xl font-bold uppercase leading-[0.95] text-[#F2F0EA] sm:text-6xl lg:text-7xl">
-              Production-minded software with cinematic interfaces.
+              MERN stack projects with React, Node.js, Express, and MongoDB.
             </h2>
           </div>
           <p className="max-w-xl text-base leading-relaxed text-[#A9A69F] lg:col-span-4 lg:col-start-9">
-            Each case study shows product purpose, API thinking, authentication,
-            database structure, deployment path, and performance decisions.
+            Each case study shows product purpose, REST API thinking,
+            authentication, MongoDB schema structure, deployment path, and
+            performance decisions.
           </p>
         </div>
       </div>

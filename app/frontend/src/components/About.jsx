@@ -6,15 +6,15 @@ const portrait =
 
 const story = [
   {
-    overline: "01 / Product architecture",
+    overline: "01 / Full-stack product architecture",
     text: "I think through the full product path: interface states, API contracts, authentication rules, data models, and deployment constraints before the UI ever feels finished.",
   },
   {
-    overline: "02 / MERN engineering",
+    overline: "02 / MERN stack engineering",
     text: "I build with React, Node.js, Express, MongoDB, authentication patterns, REST APIs, and performance-minded component systems that keep expressive work usable.",
   },
   {
-    overline: "03 / Experience quality",
+    overline: "03 / Responsive experience quality",
     text: "The goal is not decoration. It is scalable software with a cinematic surface: fast, readable, responsive, reliable, and memorable.",
   },
 ];
@@ -75,7 +75,7 @@ export default function About() {
         <div className="lg:col-span-7 lg:pl-12">
           <div className="mb-8 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
             <span className="h-px w-10 bg-[#D97736]" />
-            About / Story
+            About / MERN Stack Developer
           </div>
           <motion.h2
             initial={{ opacity: 0, y: 28 }}
@@ -85,9 +85,9 @@ export default function About() {
             data-testid="about-headline"
             className="font-display text-4xl font-bold leading-[1.02] text-[#F2F0EA] sm:text-5xl lg:text-6xl"
           >
-            Working at the intersection of{" "}
-            <span className="text-[#D97736]">full-stack</span> architecture,
-            motion, and product experience.
+            Full-stack web developer focused on{" "}
+            <span className="text-[#D97736]">MERN architecture</span>,
+            responsive UI, APIs, and product experience.
           </motion.h2>
 
           <motion.p
@@ -98,8 +98,9 @@ export default function About() {
             className="mt-10 max-w-3xl text-base leading-relaxed text-[#A9A69F] sm:text-lg"
           >
             Mohammed Ayyan builds immersive MERN stack applications where
-            backend logic, MongoDB data, authentication, API design, cinematic
-            motion, and interaction design merge into polished digital products.
+            React components, backend logic, MongoDB data, authentication, REST
+            API design, cinematic motion, and interaction design merge into
+            polished digital products.
           </motion.p>
 
           <div className="mt-16 space-y-10">

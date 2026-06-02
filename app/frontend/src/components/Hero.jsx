@@ -5,10 +5,10 @@ import MagneticButton from "@/components/MagneticButton";
 import Scene3D from "@/components/Scene3D";
 
 const headlineLines = [
-  ["Building", "scalable"],
-  ["MERN", "stack"],
-  ["experiences"],
-  ["with", "cinematic", "UI."],
+  ["MERN", "Stack"],
+  ["Developer"],
+  ["building", "scalable"],
+  ["web", "apps."],
 ];
 
 export default function Hero() {
@@ -61,7 +61,7 @@ export default function Hero() {
             <span key={line.join("-")} className="block">
               {line.map((word, wordIndex) => {
                 const index = lineIndex * 2 + wordIndex;
-                const highlighted = ["scalable", "MERN", "cinematic"].includes(word);
+                const highlighted = ["scalable", "MERN", "Developer"].includes(word);
                 return (
                   <span key={word} className="reveal-word mr-[0.14em]">
                     <span style={{ transitionDelay: `${0.42 + index * 0.055}s` }}>
@@ -85,9 +85,10 @@ export default function Hero() {
             transition={{ duration: 0.9, delay: 1.0 }}
             className="max-w-2xl text-base font-light leading-relaxed text-[#B8B6AF] sm:text-lg"
           >
-            MERN Stack Developer crafting scalable full-stack experiences with
-            modern UI engineering, backend architecture, authentication, APIs,
-            MongoDB data models, and performance-focused deployment workflows.
+            Mohammed Ayyan is a MERN Stack Developer crafting scalable
+            full-stack web applications with React interfaces, Node.js and
+            Express APIs, authentication, MongoDB data models, and
+            performance-focused deployment workflows.
           </motion.p>
 
           <motion.div

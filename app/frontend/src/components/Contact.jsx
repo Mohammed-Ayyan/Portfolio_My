@@ -58,7 +58,7 @@ export default function Contact() {
         <div className="text-center">
           <div className="mb-8 inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
             <span className="h-px w-10 bg-[#D97736]" />
-            Contact / Closing Frame
+            Contact / Hire MERN Developer
             <span className="h-px w-10 bg-[#D97736]" />
           </div>
           <motion.h2
@@ -69,17 +69,17 @@ export default function Contact() {
             data-testid="contact-headline"
             className="font-display text-5xl font-bold uppercase leading-[0.95] text-[#F2F0EA] sm:text-7xl lg:text-8xl"
           >
-            Let's build
+            Hire a MERN
             <br />
-            <em className="not-italic text-[#D97736]">something</em>
+            <em className="not-italic text-[#D97736]">Stack Developer</em>
             <br />
-            unforgettable together.
+            for your next build.
           </motion.h2>
           <p className="mx-auto mt-8 max-w-2xl text-base font-light leading-relaxed text-[#A9A69F] sm:text-lg">
             Creating scalable MERN stack products through backend architecture,
-            APIs, MongoDB, authentication, motion, interaction, and engineering.
-            Open to collaborations, creative products, and production-ready web
-            applications.
+            REST APIs, MongoDB, authentication, responsive React interfaces,
+            motion, interaction, and engineering. Open to collaborations,
+            creative products, and production-ready web applications.
           </p>
         </div>
 

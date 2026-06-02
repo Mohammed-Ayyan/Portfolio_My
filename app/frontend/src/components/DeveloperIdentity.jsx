@@ -84,7 +84,7 @@ export default function DeveloperIdentity() {
             className="sig-overline mb-7 justify-center"
           >
             <span className="sig-overline-dash" />
-            MERN Stack / Full-Stack Engineer
+            MERN Stack Developer / Full-Stack Engineer
           </motion.div>
 
           <motion.h2
@@ -94,9 +94,9 @@ export default function DeveloperIdentity() {
             transition={{ duration: 1.1, delay: 0.06, ease: [0.77, 0, 0.175, 1] }}
             className="sig-heading"
           >
-            <span className="sig-heading-line">Mohammed</span>
+            <span className="sig-heading-line">Mohammed Ayyan</span>
             <span className="sig-heading-line sig-heading-accent">
-              Ayyan<span className="sig-heading-dot">.</span>
+              Full-Stack Developer<span className="sig-heading-dot">.</span>
             </span>
           </motion.h2>
 
@@ -107,10 +107,11 @@ export default function DeveloperIdentity() {
             transition={{ duration: 0.9, delay: 0.16, ease: [0.77, 0, 0.175, 1] }}
             className="sig-body identity-body mx-auto mt-8"
           >
-            Full-stack MERN engineer orchestrating production ecosystems,
-            connecting performant user interfaces with secure REST APIs, robust
-            backend execution, optimized data architectures, and disciplined
-            algorithmic problem-solving.
+            Full-stack MERN engineer building production-minded web
+            applications, connecting performant React user interfaces with
+            secure REST APIs, robust Node.js backend execution, optimized
+            MongoDB data architecture, and disciplined algorithmic
+            problem-solving.
           </motion.p>
 
           <motion.div

@@ -12,10 +12,10 @@ export default function Experience() {
           <div className="lg:col-span-5">
             <div className="mb-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
               <span className="h-px w-10 bg-[#D97736]" />
-              Experience / Internship
+              Experience / Backend Developer Internship
             </div>
             <h2 className="font-display text-5xl font-bold uppercase leading-[0.95] text-[#F2F0EA] sm:text-6xl">
-            Backend experience that strengthens full-stack product thinking.
+            Backend developer experience that strengthens full-stack MERN product thinking.
             </h2>
           </div>
 
@@ -34,7 +34,7 @@ export default function Experience() {
             <p className="mt-6 text-base leading-relaxed text-[#A9A69F]">
               Worked with backend concepts, API structures, database thinking,
               and data handling patterns while learning how stable server-side
-              systems support polished product experiences.
+              systems support polished MERN stack product experiences.
             </p>
 
             <div className="mt-10 grid gap-px bg-[#E8E8E3]/10 sm:grid-cols-3">

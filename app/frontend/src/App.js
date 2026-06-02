@@ -18,7 +18,7 @@ import GrainOverlay from "@/components/GrainOverlay";
 
 const Portfolio = () => {
   useEffect(() => {
-    document.title = "Mohammed Ayyan | MERN Stack Developer";
+    document.title = "Mohammed Ayyan | MERN Stack Developer Portfolio";
   }, []);
 
   useEffect(() => {

@@ -48,18 +48,19 @@ export default function Skills() {
           <div className="lg:col-span-5">
             <div className="mb-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#D97736]">
               <span className="h-px w-10 bg-[#D97736]" />
-              Craft / Systems
+              MERN Skills / Technical Stack
             </div>
             <h2 className="font-display text-5xl font-bold uppercase leading-[0.95] text-[#F2F0EA] sm:text-6xl">
-              A full-stack stack with cinematic frontend taste.
+              A MERN stack skill set for scalable full-stack web apps.
             </h2>
           </div>
 
           <div className="lg:col-span-6 lg:col-start-7">
             <p className="max-w-2xl text-base leading-relaxed text-[#A9A69F] sm:text-lg">
-              Skills are grouped as production systems, not icon lists. The stack
-              connects interface craft with APIs, authentication, MongoDB data,
-              deployment, and performance-minded product thinking.
+              Skills are grouped as production systems, not icon lists. The MERN
+              stack connects React interface craft with Node.js APIs,
+              authentication, MongoDB data, deployment, and performance-minded
+              product thinking.
             </p>
             <div className="mt-8 flex flex-wrap gap-2">
               {categories.map((category) => (
@@ -131,7 +132,7 @@ export default function Skills() {
               Skill Orbit / Interactive Map
             </div>
             <h3 className="font-display text-4xl font-semibold uppercase leading-[0.95] text-[#E8E8E3] sm:text-5xl">
-              A solar system of full-stack craft.
+              A map of full-stack MERN development skills.
             </h3>
             <p className="mt-6 max-w-md text-base leading-relaxed text-[#A9A69F]">
               Each orbit groups technologies around a product layer, showing how
