@@ -39,15 +39,18 @@ export default function Navbar() {
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: hidden ? -120 : 0, opacity: hidden ? 0 : 1 }}
         transition={{ duration: 0.6, ease: [0.77, 0, 0.175, 1] }}
-        className={`fixed left-0 right-0 top-0 z-50 transition-colors duration-500 ${scrolled ? "glass" : ""}`}
+        className={`nav-shell fixed left-0 right-0 top-0 z-50 transition-colors duration-300 ${scrolled ? "is-scrolled" : ""}`}
       >
-        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 sm:px-10 lg:px-14">
-          <button type="button" onClick={() => scrollTo("hero")} data-testid="nav-logo" data-cursor="hover" className="group flex items-center gap-3">
-            <span className="relative flex h-9 w-9 items-center justify-center border border-[#E8E8E3]/20">
-              <span className="h-1.5 w-1.5 bg-[#D97736] transition-transform duration-500 group-hover:scale-[1.8]" />
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
+          <button type="button" onClick={() => scrollTo("hero")} data-testid="nav-logo" data-cursor="hover" className="brand-lockup group flex min-w-0 items-center gap-3">
+            <span className="brand-mark" aria-hidden="true">
+              <span className="brand-mark-core" />
+              <span className="brand-mark-signal brand-mark-signal-a" />
+              <span className="brand-mark-signal brand-mark-signal-b" />
             </span>
-            <span className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-[#E8E8E3]">
-              Mohammed Ayyan
+            <span className="brand-wordmark font-display text-sm font-semibold uppercase text-[#E8E8E3]">
+              <span>Mohammed</span>
+              <span>Ayyan</span>
             </span>
           </button>
 
@@ -80,7 +83,7 @@ export default function Navbar() {
             onClick={() => setOpen((value) => !value)}
             data-testid="nav-menu-toggle"
             data-cursor="hover"
-            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+            className="nav-menu-button flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
             aria-label="Toggle menu"
           >
             <span className={`block h-px w-6 bg-[#E8E8E3] transition-transform duration-500 ${open ? "translate-y-[3px] rotate-45" : ""}`} />
@@ -97,7 +100,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.45, ease: [0.77, 0, 0.175, 1] }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-7 bg-[#08080A]/96 backdrop-blur-2xl lg:hidden"
+            className="mobile-nav-panel fixed inset-0 z-40 flex flex-col items-center justify-center gap-5 bg-[#08080A]/97 lg:hidden"
           >
             {links.map((link, index) => (
               <motion.button
@@ -108,7 +111,7 @@ export default function Navbar() {
                 transition={{ delay: 0.06 * index, duration: 0.55 }}
                 onClick={() => scrollTo(link.target)}
                 data-testid={`mobile-nav-link-${link.target}`}
-                className="font-display text-4xl font-medium uppercase text-[#E8E8E3]"
+                className="font-display text-[clamp(2rem,10vw,3.5rem)] font-medium uppercase leading-none text-[#E8E8E3]"
               >
                 {link.label}
               </motion.button>

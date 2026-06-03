@@ -9,23 +9,32 @@ export default function SmoothScroll({ children }) {
   const lenisRef = useRef(null);
 
   useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarsePointer = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+    const narrowViewport = window.matchMedia("(max-width: 900px)").matches;
+
+    if (reduceMotion || coarsePointer || narrowViewport) {
+      document.documentElement.style.scrollBehavior = "smooth";
+      return () => {
+        document.documentElement.style.scrollBehavior = "";
+      };
+    }
+
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 0.82,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 1.5,
+      touchMultiplier: 1,
     });
     lenisRef.current = lenis;
 
     function raf(time) {
       lenis.raf(time);
-      ScrollTrigger.update();
       requestAnimationFrame(raf);
     }
     const id = requestAnimationFrame(raf);
 
-    // sync ScrollTrigger to Lenis
     lenis.on("scroll", ScrollTrigger.update);
 
     return () => {

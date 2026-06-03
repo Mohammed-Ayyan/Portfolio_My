@@ -16,8 +16,15 @@ export default function Cursor() {
   const [label, setLabel] = useState("");
 
   useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    if (reduceMotion || !canHover) return undefined;
+
     const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     const ring = { x: pos.x, y: pos.y };
+    let running = false;
+    let frameId = 0;
 
     const move = (e) => {
       pos.x = e.clientX;
@@ -36,10 +43,11 @@ export default function Cursor() {
       if (ringRef.current) {
         ringRef.current.style.transform = `translate3d(${ring.x}px, ${ring.y}px, 0) translate(-50%, -50%)`;
       }
-      requestAnimationFrame(animate);
+      if (running) frameId = requestAnimationFrame(animate);
     };
 
-    const id = requestAnimationFrame(animate);
+    running = true;
+    frameId = requestAnimationFrame(animate);
     window.addEventListener("mousemove", move, { passive: true });
 
     const handleOver = (e) => {
@@ -67,7 +75,8 @@ export default function Cursor() {
     document.addEventListener("mouseout", handleOut);
 
     return () => {
-      cancelAnimationFrame(id);
+      running = false;
+      cancelAnimationFrame(frameId);
       window.removeEventListener("mousemove", move);
       document.removeEventListener("mouseover", handleOver);
       document.removeEventListener("mouseout", handleOut);

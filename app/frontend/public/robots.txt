@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mohammed-ayyan.dev/sitemap.xml
+Sitemap: https://portfolio-my.vercel.app/sitemap.xml

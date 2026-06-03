@@ -32,7 +32,7 @@ export default function Hero() {
       <Scene3D />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(7,7,9,0.15),rgba(7,7,9,0.08)_42%,#08080a_100%)]" />
 
-      <div className="absolute left-0 right-0 top-24 z-20 flex justify-between px-6 font-mono text-[10px] uppercase tracking-[0.3em] text-[#8A8A93] sm:px-10 lg:px-14">
+      <div className="absolute left-0 right-0 top-24 z-20 flex justify-between px-5 font-mono text-[clamp(0.5rem,2.1vw,0.625rem)] uppercase tracking-[0.22em] text-[#8A8A93] sm:px-10 sm:tracking-[0.3em] lg:px-14">
         <motion.span initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.35 }}>
           Mohammed Ayyan / MERN Stack
         </motion.span>
@@ -41,12 +41,12 @@ export default function Hero() {
         </motion.span>
       </div>
 
-      <div className="relative z-20 mx-auto flex min-h-[100svh] max-w-[1600px] flex-col justify-center px-6 pb-20 pt-36 sm:px-10 lg:px-14 lg:pb-24 lg:pt-32">
+      <div className="relative z-20 mx-auto flex min-h-[100svh] max-w-[1600px] flex-col justify-center px-5 pb-20 pt-36 sm:px-10 lg:px-14 lg:pb-24 lg:pt-32">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.25 }}
-          className="mb-6 flex max-w-4xl items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[#D97736]"
+          className="mb-6 flex max-w-4xl items-center gap-3 font-mono text-[clamp(0.52rem,2.2vw,0.625rem)] uppercase tracking-[0.18em] text-[#D97736] sm:tracking-[0.28em]"
         >
           <span className="h-px w-8 bg-[#D97736]" />
           MERN Stack Developer / Full-Stack Engineer / Motion-Led UI
@@ -55,7 +55,7 @@ export default function Hero() {
         <h1
           ref={headlineRef}
           data-testid="hero-headline"
-          className="max-w-[1180px] font-display text-[clamp(2.85rem,6vw,6.8rem)] font-black uppercase leading-[0.9] text-[#F2F0EA]"
+          className="hero-title max-w-[1180px] font-display text-[clamp(2.55rem,12vw,6.8rem)] font-black uppercase leading-[0.92] text-[#F2F0EA] sm:text-[clamp(3.8rem,7vw,6.8rem)]"
         >
           {headlineLines.map((line, lineIndex) => (
             <span key={line.join("-")} className="block">
@@ -78,7 +78,7 @@ export default function Hero() {
           ))}
         </h1>
 
-        <div className="mt-8 grid gap-7 border-t border-[#E8E8E3]/10 pt-7 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div className="mt-8 grid gap-7 border-t border-[#E8E8E3]/10 pt-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <motion.p
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}

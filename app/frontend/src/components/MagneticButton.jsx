@@ -35,6 +35,9 @@ const MagneticButton = forwardRef(function MagneticButton(
   useEffect(() => {
     const el = btnRef.current;
     if (!el) return;
+    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!canHover || reduceMotion) return undefined;
 
     const move = (e) => {
       if (frameRef.current) return;

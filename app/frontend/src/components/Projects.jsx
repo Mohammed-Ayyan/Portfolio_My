@@ -164,7 +164,7 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="mx-auto mt-16 grid max-w-[1600px] grid-cols-1 gap-10 px-6 sm:px-10 lg:hidden">
+      <div className="mx-auto mt-12 grid max-w-[1600px] grid-cols-1 gap-7 px-5 sm:px-10 lg:hidden">
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} mobile />
         ))}
@@ -183,7 +183,7 @@ function ProjectCard({ project, mobile = false }) {
   ];
 
   return (
-    <article data-testid={`project-card-${project.id}`} data-cursor-label="View" className={`project-card group relative overflow-hidden border border-[#E8E8E3]/10 bg-[#101014] ${mobile ? "min-h-[860px]" : "h-[78vh] w-[76vw] max-w-[1240px] flex-shrink-0"}`}>
+    <article data-testid={`project-card-${project.id}`} data-cursor-label="View" className={`project-card group relative overflow-hidden border border-[#E8E8E3]/10 bg-[#101014] ${mobile ? "project-card-mobile" : "h-[78vh] w-[76vw] max-w-[1240px] flex-shrink-0"}`}>
       <img src={project.image} alt={project.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-35 grayscale transition-all duration-slow group-hover:scale-[1.035] group-hover:opacity-48 group-hover:grayscale-0" />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,10,0.96),rgba(8,8,10,0.82)_52%,rgba(8,8,10,0.36))]" />
       <div className="relative z-10 flex h-full flex-col justify-between p-6 sm:p-9 lg:p-12">

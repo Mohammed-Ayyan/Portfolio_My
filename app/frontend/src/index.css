@@ -3214,3 +3214,569 @@ body {
         font-size: 6px;
     }
 }
+
+/* ---------- Production polish: performance, responsive rhythm, brand ---------- */
+.nav-shell {
+    background: rgba(8, 8, 10, 0.58);
+    border-bottom: 1px solid transparent;
+}
+
+.nav-shell.is-scrolled {
+    background: rgba(8, 8, 10, 0.9);
+    border-bottom-color: rgba(232, 232, 227, 0.08);
+    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.22);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    .nav-shell.is-scrolled {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+}
+
+.brand-mark {
+    position: relative;
+    display: grid;
+    height: 38px;
+    width: 38px;
+    place-items: center;
+    border: 1px solid rgba(232, 232, 227, 0.14);
+    border-radius: 8px;
+    background:
+        linear-gradient(145deg, rgba(217, 119, 54, 0.14), rgba(232, 232, 227, 0.025)),
+        rgba(8, 8, 10, 0.86);
+    box-shadow: inset 0 1px 0 rgba(232, 232, 227, 0.06);
+    overflow: hidden;
+}
+
+.brand-mark::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(217, 119, 54, 0.62);
+    border-radius: 6px;
+    transform: rotate(45deg);
+}
+
+.brand-mark-core {
+    position: relative;
+    z-index: 2;
+    height: 8px;
+    width: 8px;
+    border-radius: 9999px;
+    background: #f5a623;
+    box-shadow: 0 0 18px rgba(245, 166, 35, 0.32);
+}
+
+.brand-mark-signal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 1px;
+    width: 22px;
+    background: linear-gradient(90deg, transparent, rgba(232, 232, 227, 0.76), transparent);
+    transform-origin: center;
+}
+
+.brand-mark-signal-a {
+    transform: translate(-50%, -50%) rotate(28deg);
+}
+
+.brand-mark-signal-b {
+    transform: translate(-50%, -50%) rotate(-28deg);
+}
+
+.brand-wordmark {
+    display: flex;
+    gap: 0.42rem;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.nav-menu-button {
+    border: 1px solid rgba(232, 232, 227, 0.12);
+    border-radius: 8px;
+    background: rgba(232, 232, 227, 0.025);
+}
+
+.mobile-nav-panel {
+    background:
+        radial-gradient(circle at 50% 12%, rgba(217, 119, 54, 0.1), transparent 34%),
+        rgba(8, 8, 10, 0.98);
+}
+
+.hero-frame {
+    box-shadow: 0 28px 72px rgba(0, 0, 0, 0.26);
+}
+
+.hero-panel,
+.hero-panel-delayed {
+    animation-duration: 14s;
+}
+
+.project-card {
+    box-shadow: 0 22px 56px rgba(0, 0, 0, 0.24);
+}
+
+.identity-signal-section::before {
+    filter: blur(12px);
+    opacity: 0.55;
+    animation-duration: 18s;
+}
+
+.identity-dust span:nth-child(n + 11) {
+    display: none;
+}
+
+.sig-env-grid { animation-duration: 80s; }
+.sig-env-scan { animation-duration: 34s; }
+.sig-fog-warm,
+.sig-fog-cool,
+.sig-fog-mid { animation-duration: 30s; }
+.sig-heading-accent { animation-duration: 20s; }
+.identity-dust span { animation-duration: 26s; }
+.identity-whisper { animation-duration: 24s; }
+.sig-overline-dash { animation-duration: 5s; }
+.marquee-track { animation-duration: 42s; }
+.orbit-layer-1,
+.orbit-layer-1 .skill-orbit-node { --counter-duration: 56s; animation-duration: 56s; }
+.orbit-layer-2,
+.orbit-layer-2 .skill-orbit-node { --counter-duration: 76s; animation-duration: 76s; }
+.orbit-layer-3,
+.orbit-layer-3 .skill-orbit-node { --counter-duration: 96s; animation-duration: 96s; }
+
+.sig-fog-warm {
+    filter: blur(82px);
+    opacity: 0.7;
+}
+
+.sig-fog-cool {
+    filter: blur(86px);
+    opacity: 0.62;
+}
+
+.sig-fog-mid {
+    display: none;
+}
+
+.sig-env-noise,
+.grain-overlay {
+    opacity: 0.016;
+}
+
+.identity-actions .btn-magnetic,
+.skill-orbit-core,
+.glass,
+.system-core,
+.architecture-core,
+.reactor-panel,
+.nerve-core,
+.nerve-memory {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.btn-magnetic {
+    min-height: clamp(52px, 6vw, 62px);
+    min-width: min(245px, 100%);
+    box-shadow: none;
+}
+
+.btn-magnetic:hover,
+.btn-magnetic.solid:hover {
+    box-shadow: 0 12px 30px rgba(217, 119, 54, 0.16);
+}
+
+.scroll-reveal {
+    transform: translate3d(0, 24px, 0);
+    transition-duration: 0.62s;
+}
+
+.about-portrait,
+.skill-orbit-core {
+    box-shadow: 0 20px 54px rgba(0, 0, 0, 0.24);
+}
+
+.skill-orbit {
+    min-height: clamp(430px, 58vw, 600px);
+}
+
+.project-card-mobile {
+    min-height: auto;
+}
+
+.project-card-mobile > img {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    display: block;
+    height: auto;
+    min-height: 210px;
+    width: 100%;
+    opacity: 0.46;
+}
+
+.project-card-mobile > .absolute.inset-0 {
+    background: linear-gradient(180deg, rgba(8, 8, 10, 0.25), rgba(8, 8, 10, 0.98) 64%);
+}
+
+.project-card-mobile > .relative {
+    height: auto;
+    min-height: 0;
+    gap: 2rem;
+}
+
+@media (max-width: 1023px) {
+    .hero-atmosphere {
+        opacity: 0.82;
+    }
+
+    .hero-panel,
+    .hero-panel-delayed,
+    .identity-dust span,
+    .identity-whisper,
+    .sig-env-scan,
+    .sig-env-fog,
+    .marquee-track,
+    .orbit-layer,
+    .skill-orbit-node {
+        animation-play-state: paused;
+    }
+
+    .identity-signal-section,
+    section {
+        scroll-margin-top: 76px;
+    }
+
+    .identity-signal-section {
+        min-height: auto;
+        padding-block: clamp(5rem, 13vw, 8rem);
+    }
+
+    .identity-centered {
+        min-height: auto;
+    }
+
+    .sig-heading {
+        font-size: clamp(3rem, 13vw, 7rem);
+        line-height: 0.9;
+        text-shadow: 0 2px 28px rgba(0, 0, 0, 0.5);
+    }
+
+    .sig-heading-accent {
+        background-size: 100% 100%;
+    }
+
+    .identity-body {
+        max-width: 42rem;
+        font-size: clamp(0.95rem, 3.2vw, 1.08rem);
+        line-height: 1.68;
+    }
+
+    .identity-actions {
+        width: 100%;
+    }
+
+    .identity-actions .btn-magnetic {
+        width: min(100%, 320px);
+        min-height: 54px;
+    }
+
+    .project-card {
+        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
+    }
+
+    .skill-orbit {
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 760px) {
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    body {
+        cursor: auto;
+    }
+
+    .cursor-dot,
+    .cursor-ring,
+    .cursor-label {
+        display: none;
+    }
+
+    .nav-shell {
+        background: rgba(8, 8, 10, 0.9);
+        border-bottom: 1px solid rgba(232, 232, 227, 0.08);
+    }
+
+    .brand-mark {
+        height: 34px;
+        width: 34px;
+        border-radius: 7px;
+    }
+
+    .brand-wordmark {
+        flex-direction: column;
+        gap: 0.12rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+    }
+
+    .hero-title {
+        max-width: 10ch;
+    }
+
+    .hero-atmosphere {
+        transform: none !important;
+    }
+
+    .hero-frame {
+        bottom: 13%;
+        left: -12%;
+        right: -12%;
+        height: 28vh;
+        box-shadow: 0 22px 52px rgba(0, 0, 0, 0.24);
+    }
+
+    .hero-panel {
+        bottom: 22%;
+        left: 10%;
+        width: 54vw;
+        min-width: 0;
+        height: 16vh;
+    }
+
+    .btn-magnetic {
+        min-height: 52px;
+        padding-inline: 1rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.11em;
+    }
+
+    .btn-magnetic > span {
+        white-space: normal;
+        text-align: center;
+    }
+
+    section {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #about,
+    #projects,
+    #skills,
+    #experience,
+    #contact {
+        padding-block: clamp(4.75rem, 15vw, 7rem);
+    }
+
+    #about h2,
+    #projects h2,
+    #skills h2,
+    #experience h2,
+    #contact h2 {
+        font-size: clamp(2.35rem, 11vw, 3.6rem) !important;
+        line-height: 1 !important;
+    }
+
+    #skills h3,
+    #experience h3,
+    #contact h3 {
+        font-size: clamp(1.85rem, 8vw, 2.75rem) !important;
+        line-height: 1.05 !important;
+    }
+
+    #about p,
+    #projects p,
+    #skills p,
+    #experience p,
+    #contact p {
+        font-size: clamp(0.94rem, 3.5vw, 1.02rem) !important;
+        line-height: 1.68 !important;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    a,
+    button,
+    span {
+        overflow-wrap: anywhere;
+    }
+
+    .sig-overline {
+        justify-content: center;
+        font-size: 0.5rem;
+        letter-spacing: 0.15em;
+        line-height: 1.7;
+    }
+
+    .sig-overline-dash {
+        width: 22px;
+        animation: none;
+    }
+
+    .sig-heading {
+        font-size: clamp(2.75rem, 15vw, 4.9rem);
+        line-height: 0.92;
+    }
+
+    .sig-env-grid {
+        background-size: 64px 64px;
+        opacity: 0.22;
+    }
+
+    .sig-env-fog,
+    .identity-dust,
+    .sig-env-noise,
+    .grain-overlay {
+        display: none;
+    }
+
+    .project-card-mobile > .relative {
+        padding: 1.25rem;
+    }
+
+    .project-card-mobile h3 {
+        font-size: clamp(1.85rem, 10vw, 2.75rem);
+        line-height: 1;
+    }
+
+    .project-link {
+        width: 100%;
+        justify-content: center;
+        letter-spacing: 0.14em;
+    }
+
+    .skill-orbit {
+        min-height: 390px;
+        border-color: rgba(232, 232, 227, 0.08);
+    }
+
+    .skill-orbit::before,
+    .skill-orbit::after {
+        opacity: 0.5;
+    }
+
+    .skill-orbit-core {
+        height: 108px;
+        width: 108px;
+    }
+
+    .orbit-layer-1 {
+        height: 144px;
+        width: 144px;
+    }
+
+    .orbit-layer-2 {
+        height: 224px;
+        width: 224px;
+    }
+
+    .orbit-layer-3 {
+        height: 302px;
+        width: 302px;
+    }
+
+    .orbit-layer-1,
+    .orbit-layer-1 .skill-orbit-node {
+        --orbit-size: 144px;
+    }
+
+    .orbit-layer-2,
+    .orbit-layer-2 .skill-orbit-node {
+        --orbit-size: 224px;
+    }
+
+    .orbit-layer-3,
+    .orbit-layer-3 .skill-orbit-node {
+        --orbit-size: 302px;
+    }
+
+    .skill-orbit-node {
+        min-width: 58px;
+        padding: 7px 8px;
+        font-size: 7px;
+        letter-spacing: 0.08em;
+    }
+
+    .marquee {
+        gap: 2rem;
+    }
+
+    .marquee-track {
+        gap: 2rem;
+        transform: none !important;
+    }
+
+    .float-field input,
+    .float-field textarea {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .brand-wordmark span:first-child {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: clamp(2.28rem, 13.5vw, 3.3rem);
+    }
+
+    .identity-actions .btn-magnetic,
+    .btn-magnetic {
+        width: 100%;
+    }
+
+    .project-card-mobile > img {
+        min-height: 180px;
+    }
+
+    .skill-orbit {
+        min-height: 350px;
+        transform: scale(0.92);
+        transform-origin: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+    .hero-panel,
+    .hero-panel-delayed,
+    .identity-signal-section::before,
+    .identity-dust span,
+    .identity-whisper,
+    .sig-env-grid,
+    .sig-env-scan,
+    .sig-env-fog,
+    .sig-heading-accent,
+    .sig-overline-dash,
+    .marquee-track,
+    .orbit-layer,
+    .skill-orbit-node,
+    .reactor-orb,
+    .nerve-ripple,
+    .nerve-core,
+    .nerve-memory,
+    .terminal-cursor {
+        animation: none !important;
+    }
+
+    .scroll-reveal {
+        transition-duration: 0.36s;
+        will-change: auto;
+    }
+
+    .horizontal-track,
+    .btn-magnetic,
+    .cursor-dot,
+    .cursor-ring {
+        will-change: auto;
+    }
+}
