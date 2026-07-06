@@ -6,7 +6,6 @@
 
 .canvas-header {
   background: linear-gradient(to bottom, #0B0B0D, rgba(11, 11, 13, 0.8));
-  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(232, 232, 227, 0.1);
   position: sticky;
   top: 0;
@@ -14,8 +13,10 @@
 }
 
 .canvas-content {
-  scrollbar-width: thin;
-  scrollbar-color: #D97736 #0B0B0D;
+  background-image:
+    linear-gradient(rgba(232, 232, 227, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 232, 227, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
 
 .canvas-content::-webkit-scrollbar {
