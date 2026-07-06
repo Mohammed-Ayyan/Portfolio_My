@@ -1,0 +1,266 @@
+/* Canvas Component Styles */
+
+.canvas-container {
+  background: #08080A;
+}
+
+.canvas-header {
+  background: linear-gradient(to bottom, #0B0B0D, rgba(11, 11, 13, 0.8));
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(232, 232, 227, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.canvas-content {
+  scrollbar-width: thin;
+  scrollbar-color: #D97736 #0B0B0D;
+}
+
+.canvas-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.canvas-content::-webkit-scrollbar-track {
+  background: #0B0B0D;
+}
+
+.canvas-content::-webkit-scrollbar-thumb {
+  background: #D97736;
+  border-radius: 3px;
+}
+
+.canvas-content::-webkit-scrollbar-thumb:hover {
+  background: #E8A556;
+}
+
+/* Content animations */
+.canvas-content > div {
+  animation: contentSlideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes contentSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Grid backgrounds */
+.canvas-content {
+  background-image:
+    linear-gradient(rgba(232, 232, 227, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 232, 227, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Tool content sections */
+.selection-tool-content,
+.code-inspector-content,
+.api-monitor-content,
+.database-viewer-content,
+.deployment-console-content,
+.sketch-tool-content,
+.merge-tool-content,
+.performance-auditor-content {
+  min-height: 100%;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Code blocks and terminals */
+.code-inspector-content pre,
+.database-viewer-content pre,
+.deployment-console-content pre {
+  background: #0B0B0D;
+  border: 1px solid rgba(232, 232, 227, 0.1);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.code-inspector-content code,
+.deployment-console-content code {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #A9A69F;
+}
+
+/* Terminal styling */
+.terminal-output {
+  background: #0B0B0D;
+  border: 1px solid rgba(232, 232, 227, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  line-height: 1.8;
+  color: #7ABA00;
+  overflow-x: auto;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.terminal-output .success {
+  color: #4CAF50;
+}
+
+.terminal-output .error {
+  color: #F44336;
+}
+
+.terminal-output .warning {
+  color: #FFC107;
+}
+
+.terminal-output .info {
+  color: #2196F3;
+}
+
+/* Table styling */
+.database-viewer-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.database-viewer-content th,
+.database-viewer-content td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(232, 232, 227, 0.05);
+}
+
+.database-viewer-content th {
+  background: #0B0B0D;
+  font-weight: 600;
+}
+
+.database-viewer-content tr:hover {
+  background: rgba(232, 232, 227, 0.03);
+}
+
+/* Sketch canvas */
+canvas {
+  display: block;
+  cursor: crosshair;
+  background: linear-gradient(135deg, #0B0B0D 0%, #101014 100%);
+  border-radius: 8px;
+  border: 1px solid rgba(232, 232, 227, 0.1);
+  touch-action: none;
+}
+
+canvas:active {
+  cursor: crosshair;
+}
+
+/* Charts and graphs */
+.chart-container {
+  background: #101014;
+  border: 1px solid rgba(232, 232, 227, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+/* Status indicators */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-indicator.success {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4CAF50;
+}
+
+.status-indicator.warning {
+  background: rgba(255, 193, 7, 0.15);
+  color: #FFC107;
+}
+
+.status-indicator.error {
+  background: rgba(244, 67, 54, 0.15);
+  color: #F44336;
+}
+
+.status-indicator.info {
+  background: rgba(33, 150, 243, 0.15);
+  color: #2196F3;
+}
+
+/* Animations for status changes */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.status-indicator.active {
+  animation: pulse 2s infinite;
+}
+
+/* Empty state styling */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #8A8A93;
+}
+
+.empty-state svg {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  opacity: 0.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .canvas-header {
+    padding: 16px;
+  }
+
+  .canvas-content {
+    padding: 16px;
+  }
+
+  .code-inspector-content {
+    grid-template-columns: 1fr;
+  }
+
+  .database-viewer-content table {
+    font-size: 12px;
+  }
+
+  .database-viewer-content th,
+  .database-viewer-content td {
+    padding: 8px;
+  }
+
+  canvas {
+    max-width: 100%;
+  }
+}

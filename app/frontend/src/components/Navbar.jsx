@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const links = [
   { label: "Index", target: "hero" },
@@ -11,6 +12,7 @@ const links = [
 ];
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -72,6 +74,14 @@ export default function Navbar() {
           </ul>
 
           <div className="hidden items-center gap-4 md:flex">
+            <button
+              type="button"
+              onClick={() => navigate("/interactive")}
+              data-cursor="hover"
+              className="px-3 py-1.5 border border-[#D97736] text-[#D97736] font-mono text-[10px] uppercase tracking-[0.18em] hover:bg-[#D97736] hover:text-[#08080A] transition-colors rounded"
+            >
+              Interactive Mode
+            </button>
             <span className="h-1.5 w-1.5 bg-[#D97736]" />
             <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#8A8A93]">
               Open to collaborations

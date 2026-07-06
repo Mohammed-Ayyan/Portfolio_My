@@ -15,6 +15,7 @@ import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import GrainOverlay from "@/components/GrainOverlay";
+import InteractivePortfolio from "@/components/InteractivePortfolio/InteractivePortfolio";
 
 const Portfolio = () => {
   useEffect(() => {
@@ -73,6 +74,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Portfolio />} />
+        <Route path="/interactive" element={<InteractivePortfolio />} />
       </Routes>
       <Toaster
         position="bottom-right"

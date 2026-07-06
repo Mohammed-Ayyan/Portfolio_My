@@ -1,0 +1,249 @@
+/* Interactive Portfolio Styles */
+
+.interactive-portfolio-section {
+  background: #08080A;
+}
+
+.interactive-portfolio-container {
+  width: 100%;
+  height: calc(100vh - 80px);
+}
+
+.portfolio-grid-bg {
+  background-image:
+    linear-gradient(rgba(232, 232, 227, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 232, 227, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.5;
+}
+
+.interactive-portfolio-layout {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 280px 1fr 300px;
+}
+
+/* Toolbox Styling */
+.toolbox {
+  height: 100%;
+  overflow-y-auto;
+}
+
+.toolbox::-webkit-scrollbar {
+  width: 4px;
+}
+
+.toolbox::-webkit-scrollbar-thumb {
+  background: #D97736;
+  border-radius: 2px;
+}
+
+.toolbox::-webkit-scrollbar-track {
+  background: #0B0B0D;
+}
+
+.tool-button {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.tool-button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.tool-button:hover::before {
+  background: #D97736;
+}
+
+/* Canvas Styling */
+.canvas-container {
+  background: #08080A;
+  display: flex;
+  flex-direction: column;
+}
+
+.canvas-header {
+  animation: slideDown 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.canvas-content {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Timeline Styling */
+.commit-timeline {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.commit-timeline::-webkit-scrollbar {
+  width: 4px;
+}
+
+.commit-timeline::-webkit-scrollbar-thumb {
+  background: #D97736;
+  border-radius: 2px;
+}
+
+.commit-timeline::-webkit-scrollbar-track {
+  background: #0B0B0D;
+}
+
+.commit-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.commit-item:hover {
+  box-shadow: 0 8px 24px rgba(217, 119, 54, 0.1);
+}
+
+/* Scroll animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Canvas-specific animations */
+.selection-tool-content,
+.code-inspector-content,
+.api-monitor-content,
+.database-viewer-content,
+.deployment-console-content,
+.sketch-tool-content,
+.merge-tool-content,
+.performance-auditor-content {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Code block styling */
+code {
+  background: #0B0B0D;
+  border: 1px solid rgba(232, 232, 227, 0.1);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+pre {
+  background: #0B0B0D;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Canvas drawing */
+canvas {
+  display: block;
+  user-select: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+  .interactive-portfolio-layout {
+    grid-template-columns: 240px 1fr 280px;
+  }
+
+  .toolbox-panel {
+    width: 240px;
+    padding: 6px 3px;
+  }
+
+  .timeline-panel {
+    width: 280px;
+    padding: 6px 3px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .interactive-portfolio-layout {
+    grid-template-columns: 200px 1fr 250px;
+  }
+
+  .toolbox-panel {
+    width: 200px;
+    padding: 4px 2px;
+  }
+
+  .timeline-panel {
+    width: 250px;
+    padding: 4px 2px;
+  }
+
+  .canvas-header {
+    padding: 4px 6px;
+  }
+
+  .canvas-content {
+    padding: 8px 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .interactive-portfolio-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .toolbox-panel,
+  .timeline-panel {
+    display: none;
+  }
+
+  .canvas-container {
+    min-height: 100vh;
+  }
+
+  .interactive-portfolio-section {
+    padding: 20px 0;
+  }
+}
+
+/* Smooth scrolling */
+.toolbox,
+.commit-timeline,
+.canvas-panel {
+  scroll-behavior: smooth;
+}
+
+/* Selection highlight for accessibility */
+::selection {
+  background: rgba(217, 119, 54, 0.3);
+  color: #E8E8E3;
+}
+
+::-webkit-selection {
+  background: rgba(217, 119, 54, 0.3);
+  color: #E8E8E3;
+}
+
+::-moz-selection {
+  background: rgba(217, 119, 54, 0.3);
+  color: #E8E8E3;
+}
